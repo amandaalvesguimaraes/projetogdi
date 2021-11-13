@@ -41,3 +41,29 @@ CREATE TABLE Compra
     CONSTRAINT compre_fkey2 FOREIGN KEY (Codigo_Produto) REFERENCES Produto(Codigo)
 
 );
+
+CREATE TABLE Pet (
+    CPF_Cliente CHAR (3),
+    Nome VARCHAR (255),
+    Espécie VARCHAR (255),
+    Raça VARCHAR (255),
+    Cor VARCHAR (255),
+    Data_de_nascimento DATE,
+    CONSTRAINT cpfcliente_fkey FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF),
+    CONSTRAINT nome_pkey PRIMARY KEY (Nome)
+
+);
+
+CREATE TABLE Consulta (
+    CPF_Vet CHAR (3),
+    Nome_Pet VARCHAR (255),
+    CPF_Cliente CHAR (3),
+    Data_Consulta DATE,
+    Hora TIME,
+    Cod_Produto CHAR (3),
+    CONSTRAINT cpfvet_fkey FOREIGN KEY (CPF_Vet) REFERENCES Veterinario(CPF),
+    CONSTRAINT nomepet_fkey FOREIGN KEY (Nome_Pet) REFERENCES Pet(Nome),
+    CONSTRAINT cpfcliente_fkey FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF),
+    CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(produto_pkey)
+
+);
