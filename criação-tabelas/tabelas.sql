@@ -35,7 +35,7 @@ CREATE TABLE Compra
     CPF_Cliente CHAR (3), 
     Codigo_Produto CHAR (3), 
     Data_Compra DATE, 
-    Hora_Compra TIME, 
+    Hora_Compra VARCHAR (255), 
     CONSTRAINT compra_pkey PRIMARY KEY (CPF_Cliente, Codigo_Produto), 
     CONSTRAINT compra_fkey1 FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
     CONSTRAINT compre_fkey2 FOREIGN KEY (Codigo_Produto) REFERENCES Produto(Codigo) 
