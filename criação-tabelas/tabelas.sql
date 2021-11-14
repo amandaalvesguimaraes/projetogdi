@@ -1,6 +1,3 @@
-REM   Script: gdi
-REM   projeto de gdi
-
 CREATE TABLE Pessoa ( 
     CPF CHAR (3), 
     Nome VARCHAR (255) NOT NULL, 
