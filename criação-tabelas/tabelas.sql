@@ -18,11 +18,11 @@ CREATE TABLE Cliente (
 CREATE TABLE Produto 
 ( 
     Codigo CHAR (3), 
-    Preco integer, 
+    Preco NUMBER, 
     Lote CHAR (4), 
-    Estoque integer, 
-    Fabricacao VARCHAR (255), 
-    Validade VARCHAR (255), 
+    Estoque NUMBER, 
+    Fabricacao DATE, 
+    Validade DATE, 
     Marca VARCHAR (255) NOT NULL, 
     Nome VARCHAR (255) NOT NULL, 
     CONSTRAINT produto_pkey PRIMARY KEY (Codigo), 
@@ -35,8 +35,8 @@ CREATE TABLE Compra
 ( 
     CPF_Cliente CHAR (3), 
     Codigo_Produto CHAR (3), 
-    Data_Compra VARCHAR (255), 
-    Hora_Compra VARCHAR (255), 
+    Data_Compra DATE, 
+    Hora_Compra TIME, 
     CONSTRAINT compra_pkey PRIMARY KEY (CPF_Cliente, Codigo_Produto), 
     CONSTRAINT compra_fkey1 FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
     CONSTRAINT compre_fkey2 FOREIGN KEY (Codigo_Produto) REFERENCES Produto(Codigo) 
