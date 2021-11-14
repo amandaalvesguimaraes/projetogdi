@@ -100,9 +100,22 @@ INSERT INTO Produto(Codigo, Preco, Lote, Estoque, Fabricacao, Validade, Marca, N
 INSERT INTO Produto(Codigo, Preco, Lote, Estoque, Fabricacao, Validade, Marca, Nome) VALUES ('027', 25, '1137', 24, NULL, NULL, 'TranspoPet', 'Coleira');
 INSERT INTO Produto(Codigo, Preco, Lote, Estoque, Fabricacao, Validade, Marca, Nome) VALUES ('028', 15, '1138', 13, NULL, NULL, 'FoodPet', 'Recipiente para comida');
 
-
-
-
+/*povoamento compra*/
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('123', '001', to_date('01/10/2021', 'dd/mm/yyyy'), '13:20');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('123', '010', to_date('02/10/2021', 'dd/mm/yyyy'), '10:00');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('123', '020', to_date('05/11/2021', 'dd/mm/yyyy'), '11:40');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('234', '012', to_date('15/10/2021', 'dd/mm/yyyy'), '18:00');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('234', '009', to_date('07/11/2021', 'dd/mm/yyyy'), '15:14');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('234', '017', to_date('09/10/2021', 'dd/mm/yyyy'), '10:06');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('345', '015', to_date('20/10/2021', 'dd/mm/yyyy'), '16:10');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('345', '002', to_date('31/10/2021', 'dd/mm/yyyy'), '09:00');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('345', '004', to_date('08/11/2021', 'dd/mm/yyyy'), '15:55');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('456', '010', to_date('28/10/2021', 'dd/mm/yyyy'), '14:25');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('456', '019', to_date('02/10/2021', 'dd/mm/yyyy'), '17:00');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('456', '006', to_date('13/11/2021', 'dd/mm/yyyy'), '12:30');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('567', '004', to_date('01/11/2021', 'dd/mm/yyyy'), '13:10');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('567', '022', to_date('24/10/2021', 'dd/mm/yyyy'), '08:50');
+INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('567', '014', to_date('25/10/2021', 'dd/mm/yyyy'), '09:48');
 
 
 
