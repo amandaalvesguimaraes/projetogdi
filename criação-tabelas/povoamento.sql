@@ -21,3 +21,47 @@ INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_su
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('678', '0004');
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('789', '0005');
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('890', '0006');
+
+
+INSERT INTO Cliente (
+    CPF,
+    Nome, 
+    Email,
+    Data_Nascimento
+) 
+    VALUES 
+    (
+        '123',
+        'Amanda',
+        'amanda@email.com',
+        '2001-03-01'
+
+    ),
+    (
+        '234',
+        'Thaís',
+        'thais@email.com',
+        '2001-07-16'
+
+    ),
+    (
+        '345',
+        'Isabela',
+        'isabela@email.com',
+        '1999-08-26'
+        
+    ),
+    (
+        '456',
+        'Lorena',
+        'carla@email.com',
+        '2000-07-28'
+
+    ),
+    (
+        '567',
+        'Daniel',
+        'daniel@email.com',
+        '2000-10-12'
+        
+    );

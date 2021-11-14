@@ -1,18 +1,17 @@
-CREATE TABLE Pessoa ( 
-    CPF CHAR (3), 
-    Nome VARCHAR (255) NOT NULL, 
-    Email VARCHAR (255), 
-    Data_de_nascimento VARCHAR (255), 
-    CEP CHAR (7), 
-    CONSTRAINT pessoa_pkey PRIMARY KEY(CPF) 
-     
+CREATE TABLE Pessoa (
+    CPF CHAR (3) PRIMARY KEY,
+    Nome VARCHAR (255) NOT NULL,
+    Email VARCHAR (255),
+    Data_Nascimento DATE,
+    CEP CHAR (8)
+    
 );
 
-CREATE TABLE Cliente ( 
-    CPF CHAR (11) FOREIGN KEY REFERENCES Pessoa(CPF), /* só que CPF tbm é primary key de Cliente*/ 
-    Nome VARCHAR (255) NOT NULL, 
-    Email VARCHAR (255), 
-    Data de nascimento VARCHAR (255) 
+CREATE TABLE Cliente (
+    CPF CHAR (3) FOREIGN KEY REFERENCES Pessoa(CPF),
+    Nome VARCHAR (255) NOT NULL,
+    Email VARCHAR (255),
+    Data_Nascimento DATE  /* FORMATO YYYY-MM-DD */
 );
 
 CREATE TABLE Produto 
