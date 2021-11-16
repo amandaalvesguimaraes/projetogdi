@@ -9,9 +9,6 @@ CREATE TABLE Pessoa (
 
 CREATE TABLE Cliente (
     CPF CHAR (3),
-    Nome VARCHAR (255) NOT NULL,
-    Email VARCHAR (255) NOT NULL,
-    Data_Nascimento DATE  /* FORMATO YYYY-MM-DD */
     CONSTRAINT cliente_pkey PRIMARY KEY (CPF),
     CONSTRAINT Cliente_fkey FOREIGN KEY (CPF) REFERENCES Pessoa(CPF)
 );

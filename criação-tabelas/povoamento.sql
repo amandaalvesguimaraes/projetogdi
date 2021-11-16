@@ -1,14 +1,19 @@
-/*povoamento de pessoa apenas para eu poder povoar funcionario(só modificar depois mantendo os cpfs))*/
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('123', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('234', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('345', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('456', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('567', 'Guilherme', 'guilherme@email.com', to_date('15/05/1998', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('678', 'Joao', 'joao@email.com', to_date('15/09/1998', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('789', 'Giovanna', 'giovanna@email.com', to_date('15/12/1998', 'dd/mm/yy') );
-INSERT INTO Pessoa (cpf, nome, email, data_de_nascimento) VALUES ('890', 'Emilia', 'emilia@email.com', to_date('15/10/1998', 'dd/mm/yy') );
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('123', 'Amanda', 'amanda@email.com', to_date('01/03/2001', 'dd/mm/yy'), '75902842');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('234', 'Thaís', 'thais@email.com', to_date('16/07/2001', 'dd/mm/yy'), '25374819');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('345', 'Isabela', 'isabela@email.com', to_date('26/08/1999', 'dd/mm/yy'), '02848265');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('456', 'Lorena', 'lorena@email.com', to_date('28/07/2000', 'dd/mm/yy'), '87360428');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('567', 'Daniel', 'daniel@email.com', to_date('13/10/1998', 'dd/mm/yy'), '12859305');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), '63840284');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), '83420213');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), '62331540');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), '83206512');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('892', 'Anna', 'anna@email.com', to_date('12/10/2000', 'dd/mm/yy'), '52061540');
 
-
+INSERT INTO Cliente (CPF) VALUES ('123');
+INSERT INTO Cliente (CPF) VALUES ('234');
+INSERT INTO Cliente (CPF) VALUES ('345');
+INSERT INTO Cliente (CPF) VALUES ('456');
+INSERT INTO Cliente (CPF) VALUES ('567');
 
 /*povoamento de funcionario */
 INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('123', '100',to_date('05/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
@@ -21,53 +26,6 @@ INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_su
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('678', '0004');
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('789', '0005');
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('890', '0006');
-
-
-
-INSERT INTO Cliente (
-    CPF,
-    Nome, 
-    Email,
-    Data_Nascimento
-) 
-    VALUES 
-    (
-        '123',
-        'Amanda',
-        'amanda@email.com',
-        '2001-03-01'
-
-    ),
-    (
-        '234',
-        'Thaís',
-        'thais@email.com',
-        '2001-07-16'
-
-    ),
-    (
-        '345',
-        'Isabela',
-        'isabela@email.com',
-        '1999-08-26'
-        
-    ),
-    (
-        '456',
-        'Lorena',
-        'carla@email.com',
-        '2000-07-28'
-
-    ),
-    (
-        '567',
-        'Daniel',
-        'daniel@email.com',
-        '2000-10-12'
-        
-    );
-
-
 
 /*povoamento de produto*/
 INSERT INTO Produto(Codigo, Preco, Lote, Estoque, Fabricacao, Validade, Marca, Nome) VALUES ('000', 15, '1110', 20, to_date('11/05/2021', 'dd/mm/yyyy'), to_date('01/05/2022', 'dd/mm/yyyy'), 'LimpaPet', 'Shampoo');
