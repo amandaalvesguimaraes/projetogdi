@@ -3,7 +3,7 @@ CREATE TABLE Pessoa (
     Nome VARCHAR (255) NOT NULL,
     Email VARCHAR (255) NOT NULL,
     Data_Nascimento DATE,
-    CEP CHAR (8)
+    CEP CHAR (8),
     CONSTRAINT pessoa_pkey PRIMARY KEY (CPF)
 );
 
@@ -48,22 +48,8 @@ CREATE TABLE Pet (
     Raça VARCHAR (255), 
     Cor VARCHAR (255), 
     Data_de_nascimento DATE, 
-    CONSTRAINT cpfcliente_fkey FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
-    CONSTRAINT nome_pkey PRIMARY KEY (Nome) 
- 
-);
-
-CREATE TABLE Consulta ( 
-    CPF_Vet CHAR (3), 
-    Nome_Pet VARCHAR (255), 
-    CPF_Cliente CHAR (3), 
-    Data_Consulta DATE, 
-    Hora TIME, 
-    Cod_Produto CHAR (3), 
-    CONSTRAINT cpfvet_fkey FOREIGN KEY (CPF_Vet) REFERENCES Veterinario(CPF), 
-    CONSTRAINT nomepet_fkey FOREIGN KEY (Nome_Pet) REFERENCES Pet(Nome), 
-    CONSTRAINT cpfcliente_fkey FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
-    CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(produto_pkey) 
+    CONSTRAINT cpfcliente_fkey FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF),
+    CONSTRAINT nome_pkey PRIMARY KEY (CPF_Cliente, Nome)
  
 );
 
@@ -85,5 +71,17 @@ CREATE TABLE Veterinario (
  Numero_CRMV varchar(255) NOT NULL, 
  CONSTRAINT veterinario_pkey PRIMARY KEY(CPF), 
  CONSTRAINT veterinario_fkey FOREIGN KEY(CPF) REFERENCES Pessoa(CPF) 
+);
+
+CREATE TABLE Consulta ( 
+    CPF_Vet CHAR (3), 
+    Nome_Pet VARCHAR (255), 
+    CPF_Cliente CHAR (3), 
+    Data_Consulta DATE, 
+    Hora_Consulta VARCHAR (255), 
+    Cod_Produto CHAR (3), 
+    CONSTRAINT cpfvet_fkey FOREIGN KEY (CPF_Vet) REFERENCES Veterinario(CPF), 
+    CONSTRAINT nomecpf_fkey FOREIGN KEY (CPF_Cliente, Nome_Pet) REFERENCES Pet(CPF_Cliente, Nome), 
+    CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(Codigo)
 );
 
