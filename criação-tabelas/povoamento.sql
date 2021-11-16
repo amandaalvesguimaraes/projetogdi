@@ -75,9 +75,21 @@ INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES
 INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('567', '022', to_date('24/10/2021', 'dd/mm/yyyy'), '08:50');
 INSERT INTO Compra(CPF_Cliente, Codigo_Produto, Data_Compra, Hora_Compra) VALUES ('567', '014', to_date('25/10/2021', 'dd/mm/yyyy'), '09:48');
 
+/*povoamento de pet*/
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('123', 'Tutty', 'Cachorro', 'Cocker Spaniel', 'Branca', to_date('15/12/2010', 'dd/mm/yyyy'));
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('234', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/10/2016', 'dd/mm/yyyy'));
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('234', 'Nala', 'Cachorro', 'Yorkshire', 'Cinza', to_date('26/10/2018', 'dd/mm/yyyy'));
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('345', 'Lilica', 'Cachorro', 'Lhasa apso', 'Preta', to_date('17/04/2004', 'dd/mm/yyyy'));
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('456', 'Lupe', 'Cachorro,', 'Yorkshire', 'Preta', to_date('16/11/2011', 'dd/mm/yyyy'));
+INSERT INTO Pet(CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES ('567', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/12/2020', 'dd/mm/yyyy'));
 
-
-
+/*povoamento de consulta*/
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('678', 'Tutty', '123', to_date('16/11/2021', 'dd/mm/yyyy'), '10:00', NULL);
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('789', 'Luna', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:00', '003');
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('789', 'Nala', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:30', '004');
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('890', 'Lilica', '345', to_date('10/12/2021', 'dd/mm/yyyy'), '11:00', NULL);
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('678', 'Lupe', '456', to_date('05/12/2021', 'dd/mm/yyyy'), '09:15', '026');
+INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('890', 'Luna', '567', to_date('30/11/2021', 'dd/mm/yyyy'), '17:00', '013');
 
 
 
