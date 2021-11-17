@@ -18,13 +18,14 @@ INSERT INTO Cliente (CPF) VALUES ('234');
 INSERT INTO Cliente (CPF) VALUES ('345');
 INSERT INTO Cliente (CPF) VALUES ('456');
 INSERT INTO Cliente (CPF) VALUES ('567');
+INSERT INTO Cliente (CPF) VALUES ('892');
 
 /*povoamento de funcionario */
 INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('123', '100',to_date('05/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('234', '101',to_date('05/08/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('345', '102',to_date('05/10/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('456', '103',to_date('15/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('567', '104',to_date('25/07/2021', 'dd/mm/yy'),'Atendente', 1200.00, '456');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('678', '101',to_date('05/08/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('789', '102',to_date('05/10/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('890', '103',to_date('15/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('891', '104',to_date('25/07/2021', 'dd/mm/yy'),'Atendente', 1200.00, '890');
 
 /*povoamento de veterinário */
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('678', '0004');
@@ -132,12 +133,12 @@ INSERT INTO Servico(Tipo_Servico, Preco_Servico) VALUES ('Banho Antialérgico', 
 
 /*povoamento de Atende*/
 INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('123', 'Luna', 'Banho Pequeno', '234', to_date('17/11/2021', 'dd/mm/yyyy'), '14:20');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('234', 'Nala', 'Tosa Higiênica', '234', to_date('02/12/2021', 'dd/mm/yyyy'), '15:02');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('345', 'Lupe', 'Tosa Máquina', '456', to_date('10/12/2021', 'dd/mm/yyyy'), '09:30');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('456', 'Tutty', 'Tosa Tesoura', '123', to_date('25/11/2021', 'dd/mm/yyyy'), '17:00');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('567', 'Lilica', 'Hidratação', '345', to_date('13/12/2021', 'dd/mm/yyyy'), '12:45');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('567', 'Luna', 'Banho Antialérgico', '890', to_date('09/12/2021', 'dd/mm/yyyy'), '10:10');
-INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('345', 'Lupe', 'Banho Grande', '456', to_date('03/11/2021', 'dd/mm/yyyy'), '11:30');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('123', 'Nala', 'Tosa Higiênica', '234', to_date('02/12/2021', 'dd/mm/yyyy'), '15:02');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('891', 'Lupe', 'Tosa Máquina', '456', to_date('10/12/2021', 'dd/mm/yyyy'), '09:30');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('891', 'Tutty', 'Tosa Tesoura', '123', to_date('25/11/2021', 'dd/mm/yyyy'), '17:00');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('891', 'Lilica', 'Hidratação', '345', to_date('13/12/2021', 'dd/mm/yyyy'), '12:45');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('123', 'Luna', 'Banho Antialérgico', '567', to_date('09/12/2021', 'dd/mm/yyyy'), '10:10');
+INSERT INTO Atende(CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente, Data_Atendimento, Hora_Atendimento) VALUES ('891', 'Lupe', 'Banho Grande', '456', to_date('03/11/2021', 'dd/mm/yyyy'), '11:30');
 
 select * from (Pessoa);
 select * from (Cliente);
