@@ -95,9 +95,27 @@ INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consult
 INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('678', 'Lupe', '456', to_date('05/12/2021', 'dd/mm/yyyy'), '09:15', 026);
 INSERT INTO Consulta(CPF_Vet, Nome_Pet, CPF_Cliente, Data_Consulta, Hora_Consulta, Cod_Produto) VALUES ('890', 'Luna', '567', to_date('30/11/2021', 'dd/mm/yyyy'), '17:00', 013);
 
+/*povoamento de telefone*/
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('123456789','123');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('234567891','234');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('345678912','345');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('456789123','456');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('567891234','567');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('678912345','678');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('789123456','789');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('891234567','890');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('912345678','891');
+INSERT INTO Telefone(Num_telefone, CPF) VALUES ('502345678','892');
 
-
-
-
-
+/*povoamento de endereco*/
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 5, 'Recife' 'Rua General Polidoro', 'Várzea')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 9, 'Recife', 'Rua da Hora', 'Espinheiro')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 10, 'Recife', 'Rua Barão de Itamaraca', 'Espinheiro', 'Apartamento 302')
 
