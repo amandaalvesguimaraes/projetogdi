@@ -108,14 +108,26 @@ INSERT INTO Telefone(Num_telefone, CPF) VALUES ('912345678','891');
 INSERT INTO Telefone(Num_telefone, CPF) VALUES ('502345678','892');
 
 /*povoamento de endereco*/
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 5, 'Recife' 'Rua General Polidoro', 'Várzea')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 9, 'Recife', 'Rua da Hora', 'Espinheiro')
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 10, 'Recife', 'Rua Barão de Itamaraca', 'Espinheiro', 'Apartamento 302')
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('13245678', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12443678', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('11225678', 5, 'Recife', 'Rua General Polidoro', 'Várzea','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 9, 'Recife', 'Rua da Hora', 'Espinheiro','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 10, 'Recife', 'Rua da Hora', 'Espinheiro', 'Apartamento 302');
 
+select * from (Pessoa);
+select * from (Cliente);
+select * from (Funcionario);
+select * from (Veterinario);
+select * from (Produto);
+select * from (Compra);
+select * from (Pet);
+select * from (Consulta);
+select * from (Telefone);
+select * from (Endereco);
+select * from (Atende);
+select * from (Servico);

@@ -92,12 +92,12 @@ CREATE TABLE Endereco (
     Rua VARCHAR2 (255) NOT NULL,
     Bairro VARCHAR2 (255) NOT NULL,
     Complemento VARCHAR2 (255),
-    CONSTRAINT endereco_pk PRIMARY KEY (CEP)
+    CONSTRAINT endereco_pk PRIMARY KEY (CEP,Numero,Rua)
 );
 
 CREATE TABLE Telefone (
     Num_telefone VARCHAR2 (9) NOT NULL,
     CPF CHAR(3) NOT NULL,
     CONSTRAINT telefone_pk PRIMARY KEY (Num_telefone, CPF),
-    CONSTRAINT telefone_fk FOREIGN KEY (CPF) REFERENCES Cliente (CPF)
+    CONSTRAINT telefone_fk FOREIGN KEY (CPF) REFERENCES Pessoa (CPF)
 );
