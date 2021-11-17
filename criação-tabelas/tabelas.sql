@@ -101,3 +101,23 @@ CREATE TABLE Telefone (
     CONSTRAINT telefone_pk PRIMARY KEY (Num_telefone, CPF),
     CONSTRAINT telefone_fk FOREIGN KEY (CPF) REFERENCES Pessoa (CPF)
 );
+
+CREATE TABLE Servico ( 
+    Tipo_Servico VARCHAR2 (255) NOT NULL, 
+    Preco_Servico NUMBER NOT NULL, 
+    CONSTRAINT servico_pk PRIMARY KEY (Tipo_Servico), 
+    CONSTRAINT servico_checkPreco CHECK (Preco_Servico >= 0) 
+);
+
+CREATE TABLE Atende ( 
+    CPF_Func CHAR (3) NOT NULL, 
+    Nome_Pet VARCHAR2 (255) NOT NULL,  
+    Tipo_Servico VARCHAR2 (255) NOT NULL, 
+    CPF_Cliente CHAR (3),  
+    Data_Atendimento DATE,  
+    Hora_Atendimento VARCHAR2 (255), 
+    CONSTRAINT cpffunc_fkey_2 FOREIGN KEY (CPF_Func) REFERENCES Funcionario(CPF),  
+    CONSTRAINT nomepet_fkey_2 FOREIGN KEY (CPF_Cliente, Nome_Pet) REFERENCES Pet(CPF_Cliente, Nome), 
+    CONSTRAINT cpfcliente_fkey_2 FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
+    CONSTRAINT tiposervico_fkey_2 FOREIGN KEY (Tipo_Servico) REFERENCES Servico(Tipo_Servico) 
+);
