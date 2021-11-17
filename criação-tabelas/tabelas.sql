@@ -1,10 +1,21 @@
+CREATE TABLE Endereco (
+    Numero NUMBER NOT NULL,
+    CEP VARCHAR2 (255) NOT NULL,
+    Cidade VARCHAR2 (255) NOT NULL,
+    Rua VARCHAR2 (255) NOT NULL,
+    Bairro VARCHAR2 (255) NOT NULL,
+    Complemento VARCHAR2 (255),
+    CONSTRAINT endereco_pk PRIMARY KEY (CEP)
+);
+
 CREATE TABLE Pessoa (
     CPF CHAR (3),
     Nome VARCHAR2 (255) NOT NULL,
     Email VARCHAR2 (255) NOT NULL,
     Data_Nascimento DATE,
-    CEP CHAR (8),
-    CONSTRAINT pessoa_pkey PRIMARY KEY (CPF)
+    CEP VARCHAR2 (255),
+    CONSTRAINT pessoa_pkey PRIMARY KEY (CPF),
+    CONSTRAINT cep_fkey FOREIGN KEY (CEP) REFERENCES Endereco(CEP)
 );
 
 CREATE TABLE Cliente (
@@ -70,7 +81,7 @@ CREATE TABLE Veterinario (
  CPF char(3),  
  Numero_CRMV VARCHAR2 (255) NOT NULL, 
  CONSTRAINT veterinario_pkey PRIMARY KEY(CPF), 
- CONSTRAINT veterinario_fkey FOREIGN KEY(CPF) REFERENCES Pessoa(CPF) 
+ CONSTRAINT veterinario_fkey FOREIGN KEY(CPF) REFERENCES Funcionario(CPF) 
 );
 
 CREATE TABLE Consulta ( 
@@ -85,15 +96,7 @@ CREATE TABLE Consulta (
     CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(Codigo)
 );
 
-CREATE TABLE Endereco (
-    Numero NUMBER NOT NULL,
-    CEP VARCHAR2 (255) NOT NULL,
-    Cidade VARCHAR2 (255) NOT NULL,
-    Rua VARCHAR2 (255) NOT NULL,
-    Bairro VARCHAR2 (255) NOT NULL,
-    Complemento VARCHAR2 (255),
-    CONSTRAINT endereco_pk PRIMARY KEY (CEP,Numero,Rua)
-);
+
 
 CREATE TABLE Telefone (
     Num_telefone VARCHAR2 (9) NOT NULL,

@@ -1,17 +1,29 @@
 /* Sequencia para Codigo de Produto*/
 CREATE SEQUENCE seq INCREMENT by 1 START WITH 1;
 
+/*povoamento de endereco*/
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('111', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('112', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('113', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('114', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('115', 5, 'Recife', 'Rua General Polidoro', 'Várzea','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('116', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro','');
+INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('110', 10, 'Recife', 'Rua da Hora', 'Espinheiro', 'Apartamento 302');
 
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('123', 'Amanda', 'amanda@email.com', to_date('01/03/2001', 'dd/mm/yy'), '75902842');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('234', 'Thaís', 'thais@email.com', to_date('16/07/2001', 'dd/mm/yy'), '25374819');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('345', 'Isabela', 'isabela@email.com', to_date('26/08/1999', 'dd/mm/yy'), '02848265');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('456', 'Lorena', 'lorena@email.com', to_date('28/07/2000', 'dd/mm/yy'), '87360428');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('567', 'Daniel', 'daniel@email.com', to_date('13/10/1998', 'dd/mm/yy'), '12859305');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), '63840284');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), '83420213');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), '62331540');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), '83206512');
-INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('892', 'Anna', 'anna@email.com', to_date('12/10/2000', 'dd/mm/yy'), '52061540');
+/*povoamento de pessoa*/
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('123', 'Amanda', 'amanda@email.com', to_date('01/03/2001', 'dd/mm/yy'), '111');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('234', 'Thaís', 'thais@email.com', to_date('16/07/2001', 'dd/mm/yy'), '112');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('345', 'Isabela', 'isabela@email.com', to_date('26/08/1999', 'dd/mm/yy'), '113');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('456', 'Lorena', 'lorena@email.com', to_date('28/07/2000', 'dd/mm/yy'), '114');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('567', 'Daniel', 'daniel@email.com', to_date('13/10/1998', 'dd/mm/yy'), '115');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), '116');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), '117');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), '118');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), '119');
+INSERT INTO Pessoa (CPF, Nome, Email, Data_Nascimento, CEP) VALUES ('892', 'Anna', 'anna@email.com', to_date('12/10/2000', 'dd/mm/yy'), '110');
 
 INSERT INTO Cliente (CPF) VALUES ('123');
 INSERT INTO Cliente (CPF) VALUES ('234');
@@ -107,18 +119,6 @@ INSERT INTO Telefone(Num_telefone, CPF) VALUES ('789123456','789');
 INSERT INTO Telefone(Num_telefone, CPF) VALUES ('891234567','890');
 INSERT INTO Telefone(Num_telefone, CPF) VALUES ('912345678','891');
 INSERT INTO Telefone(Num_telefone, CPF) VALUES ('502345678','892');
-
-/*povoamento de endereco*/
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('13245678', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12443678', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('11225678', 5, 'Recife', 'Rua General Polidoro', 'Várzea','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 9, 'Recife', 'Rua da Hora', 'Espinheiro','');
-INSERT INTO Endereco(CEP, Numero, Cidade, Rua, Bairro, Complemento) VALUES ('12345678', 10, 'Recife', 'Rua da Hora', 'Espinheiro', 'Apartamento 302');
 
 /*povoamento de Serviço*/
 INSERT INTO Servico(Tipo_Servico, Preco_Servico) VALUES ('Banho Pequeno', '30');
