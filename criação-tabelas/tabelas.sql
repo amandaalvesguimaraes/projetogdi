@@ -15,7 +15,7 @@ CREATE TABLE Cliente (
 
 CREATE TABLE Produto 
 ( 
-    Codigo CHAR (3), 
+    Codigo INTEGER NOT NULL, 
     Preco NUMBER, 
     Lote CHAR (4), 
     Estoque NUMBER, 
@@ -32,7 +32,7 @@ CREATE TABLE Produto
 CREATE TABLE Compra 
 ( 
     CPF_Cliente CHAR (3), 
-    Codigo_Produto CHAR (3), 
+    Codigo_Produto INTEGER NOT NULL, 
     Data_Compra DATE, 
     Hora_Compra VARCHAR (255), 
     CONSTRAINT compra_pkey PRIMARY KEY (CPF_Cliente, Codigo_Produto), 
@@ -79,7 +79,7 @@ CREATE TABLE Consulta (
     CPF_Cliente CHAR (3), 
     Data_Consulta DATE, 
     Hora_Consulta VARCHAR (255), 
-    Cod_Produto CHAR (3), 
+    Cod_Produto INTEGER, 
     CONSTRAINT cpfvet_fkey FOREIGN KEY (CPF_Vet) REFERENCES Veterinario(CPF), 
     CONSTRAINT nomecpf_fkey FOREIGN KEY (CPF_Cliente, Nome_Pet) REFERENCES Pet(CPF_Cliente, Nome), 
     CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(Codigo)
