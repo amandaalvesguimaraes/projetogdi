@@ -38,3 +38,16 @@ BEGIN
         DBMS_OUTPUT.Put_line(funcionario_cpf_table(j));
     END LOOP;
 END funcionario_cpf_block;
+
+/*usando o bloco anônimo e criando dentro deste bloco um RECORD do tipo veterinario contendo os campos cpf e crmv,
+e depois usando o DBMS_OUTPUT.Put_line para mostrar o valor do campo veterinario no record. */
+DECLARE
+    type type_veterinario IS RECORD
+    (cpf VARCHAR2(3),
+    numero_crmv VARCHAR2(255));
+    veterinario_01 type_veterinario;
+BEGIN
+    veterinario_01.cpf := '007';
+    veterinario_01.numero_crmv := '1879';
+    DBMS_OUTPUT.Put_line(veterinario_01.numero_crmv);
+END;
