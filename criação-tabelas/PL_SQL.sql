@@ -51,3 +51,40 @@ BEGIN
     veterinario_01.numero_crmv := '1879';
     DBMS_OUTPUT.Put_line(veterinario_01.numero_crmv);
 END;
+
+--Inserir um novo pet na tabela Pet
+CREATE OR REPLACE PROCEDURE InsertPet (aux Pet%rowtype) IS
+BEGIN
+INSERT INTO Pet (CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES (aux.CPF_Cliente, aux.Nome, aux.Espécie, aux.Raça, aux.Cor, aux.Data_de_nascimento);
+END;
+
+--Função que retorna se foi receitado algum produto na consulta veterinária
+CREATE OR REPLACE FUNCTION checarConsulta (cpfVet Consulta.CPF_Vet%type, nomePet Consulta.Nome_Pet%type, cpfCliente Consulta.CPF_Cliente%type)
+RETURN VARCHAR2
+IS 
+        produto Consulta.Cod_Produto%type;
+        retorno VARCHAR2(255);
+BEGIN 
+        SELECT Consulta.Cod_Produto INTO produto
+        FROM Consulta
+        WHERE Consulta.CPF_Vet = cpfVet AND Consulta.Nome_Pet = nomePet AND Consulta.CPF_Cliente = cpfCliente;
+
+        IF produto is NULL THEN
+            retorno := 'Nenhum produto foi receitado nesta consulta!';
+        ELSIF (produto >= '1' AND produto <= '3') OR produto = '6' OR produto = '9' OR produto = '10' OR produto = '27' THEN
+            retorno := 'Foi receitado um produto da marca LimpaPet!';
+        ELSIF (produto >= '12' AND produto <= '19') OR produto = '22' OR produto = '23' OR produto = '29' THEN
+            retorno := 'Foi receitado um produto da marca FoodPet!';
+        ELSIF produto = '4' OR produto = '5' THEN
+            retorno := 'Foi receitado um produto da marca SaúdePet!';
+        ELSIF produto = '7' OR produto = '8' THEN
+            retorno := 'Foi receitado um produto da marca DestesPet!';
+        ELSIF produto = '11' OR produto = '28' THEN
+            retorno := 'Foi receitado um produto da marca TranspoPet!';
+        ELSIF produto = '20' OR produto = '21' OR produto = '26' THEN
+            retorno := 'Foi receitado um produto da marca PlayPet!';
+        ELSIF produto = '24' OR produto = '25' THEN
+            retorno := 'Foi receitado um produto da marca ConfortPet!';
+        END IF;
+        RETURN retorno;
+END;
