@@ -88,3 +88,36 @@ BEGIN
         END IF;
         RETURN retorno;
 END;
+
+
+-- inserindo produto fora da validade --
+CREATE OR REPLACE TRIGGER fora_da_validade
+BEFORE INSERT ON Produto
+FOR EACH ROW
+DECLARE 
+    fora_da_validade EXCEPTION; 
+BEGIN
+    IF :NEW.Validade < SYSDATE() THEN
+        DBMS_OUTPUT.PUT_LINE('FORA DA VALIDADE');
+        RAISE fora_da_validade;
+    END IF;
+EXCEPTION 
+    WHEN fora_da_validade THEN 
+    Raise_application_error(-12847,'Produto se encontra fora da validade-' || 'Não é possível inserir produtos fora da validade dentro do banco de dados.');
+END;
+
+-- inserindo data de nascimento do pet para um dia que ainda não chegou --
+CREATE OR REPLACE TRIGGER data_nascimento_pet_invalida
+BEFORE INSERT ON Pet
+FOR EACH ROW
+DECLARE 
+    data_nascimento_pet_invalida EXCEPTION; 
+BEGIN
+    IF :NEW.Data_de_nascimento > SYSDATE() THEN
+        DBMS_OUTPUT.PUT_LINE('DATA DE NASCIMENTO DO PET INVALIDA');
+        RAISE data_nascimento_pet_invalida;
+    END IF;
+EXCEPTION 
+    WHEN data_nascimento_pet_invalida THEN 
+    Raise_application_error(-22983,'Data de nascimento do pet é inválida -' || 'Não é possível inserir Pets que ainda não nasceram.');
+END;
