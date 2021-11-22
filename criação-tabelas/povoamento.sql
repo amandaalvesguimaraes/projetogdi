@@ -34,10 +34,10 @@ INSERT INTO Cliente (CPF) VALUES ('892');
 
 /*povoamento de funcionario */
 INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('123', '100',to_date('05/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('678', '101',to_date('05/08/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('789', '102',to_date('05/10/2020', 'dd/mm/yy'),'Atendente', 1200.00, '123');
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario) VALUES ('890', '103',to_date('15/07/2021', 'dd/mm/yy'),'Supervisor', 2000.00);
-INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('891', '104',to_date('25/07/2021', 'dd/mm/yy'),'Atendente', 1200.00, '890');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('678', '101',to_date('05/08/2020', 'dd/mm/yy'),'Veterinário', 1200.00, '123');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('789', '102',to_date('05/10/2020', 'dd/mm/yy'),'Veterinário', 1200.00, '123');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario,cpf_supervisor) VALUES ('890', '103',to_date('15/07/2021', 'dd/mm/yy'),'Veterinário', 2000.00, '123');
+INSERT INTO Funcionario(cpf, matricula, data_de_admissao, cargo, salario, cpf_supervisor) VALUES ('891', '104',to_date('25/07/2021', 'dd/mm/yy'),'Atendente', 1200.00, '123');
 
 /*povoamento de veterinário */
 INSERT INTO Veterinario(cpf, numero_crmv) VALUES ('678', '0004');
