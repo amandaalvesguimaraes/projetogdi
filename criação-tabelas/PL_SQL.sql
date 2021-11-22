@@ -119,7 +119,23 @@ BEGIN
     END IF;
 EXCEPTION 
     WHEN data_nascimento_pet_invalida THEN 
-    Raise_application_error(-22983,'Data de nascimento do pet é inválida -' || 'Não é possível inserir Pets que ainda não nasceram.');
+    Raise_application_error(-22983,'Data de nascimento do pet é inválida -' || 'Não é possível inserir pets que ainda não nasceram.');
+END;
+
+
+-- tentativa de realizar uma compra fora do horário de funcionamento --
+CREATE OR REPLACE TRIGGER compra_fora_horario_funcionamento
+BEFORE INSERT ON Compra
+DECLARE 
+    compra_fora_horario_funcionamento EXCEPTION; 
+BEGIN 
+    IF TO_NUMBER(TO_CHAR(SYSDATE, 'HH24')) > 20 OR TO_NUMBER(TO_CHAR(SYSDATE, 'HH24')) < 8 
+    THEN 
+        RAISE compra_fora_horario_funcionamento; 
+    END IF; 
+EXCEPTION 
+ WHEN compra_fora_horario_funcionamento THEN 
+    Raise_application_error(-22541,'FORA DO HORÁRIO DE FUNCIONAMENTO' || 'Não é possível realizar uma compra após o horário de funcionamento'); 
 END;
 
 
