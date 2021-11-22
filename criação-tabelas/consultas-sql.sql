@@ -11,6 +11,11 @@ WHERE CPF = '678';
 DELETE FROM Produto
 WHERE codigo = 3;
 
+/*Criar um indice sobre o atributo salario de Funcionario
+pra agilizar a busca e ordenacao dos dados em tabelas*/
+CREATE INDEX incice_sal ON
+Funcionario (salario);
+
 -- selecionar todas as marcas do produto
 SELECT Produto.Marca From Produto;
 
@@ -74,3 +79,9 @@ SELECT * FROM Produto WHERE Produto.Preco <= ALL (SELECT Produto.Preco FROM Prod
 
 --lista os funcionários que não são veterinários que tem salários maiores que pelo menos 1 veterinário
 SELECT * FROM Funcionario WHERE Funcionario.Salario >= ANY (SELECT Funcionario.Salario FROM Funcionario WHERE Funcionario.CPF IN (SELECT Veterinario.CPF FROM Veterinario)) AND Funcionario.Cargo != 'Veterinário';
+
+/*Garantir todos os privilegios (inserir, atualizar, deletar, selecionar) da tabela Pessoa 
+para acesso de todos os usuarios, em seguida removendo o privilegio de deletar e atualizar na mesma tabela
+para todos os usuarios*/
+GRANT ALL PRIVILEGES ON Pessoa TO PUBLIC;
+REVOKE DELETE, UPDATE ON Pessoa TO PUBLIC;
