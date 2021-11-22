@@ -1,3 +1,15 @@
+/*Diminuindo a quantidade de char no Complemento do endereco*/
+ALTER TABLE Endereco
+MODIFY (Complemento VARCHAR2 (100));
+
+/*Aumento do salario de um funcionario*/
+UPDATE Funcionario
+SET salario=6000
+WHERE CPF = '678';
+
+/*Deletando um produto que nao vai ser mais vendido*/
+DELETE FROM Produto
+WHERE codigo = 3;
 
 SELECT Produto.Marca From Produto;
 
