@@ -17,3 +17,24 @@ BEGIN
     reg_pessoa.cep := '110';
     INSERT INTO Pessoa VALUES reg_pessoa;
 END record_block;
+
+/* Usando o table, %type e for in loop para criar uma tabela contendo uma única coluna, correspondente ao CPF de um Funcionário.
+Usamos o Funcionario.cpf%TYPE em cima da tabela já existente no banco de dados, Funcionário e depois usamos um FOR IN LOOP para mostrar que a TABLE em PL SQL
+criada contém o cpf de todos os funcionários */
+
+<<funcionario_cpf_block>>
+DECLARE
+    TYPE funcionario_cpf_type IS TABLE OF Funcionario.cpf%type
+    INDEX BY BINARY_INTEGER;
+    funcionario_cpf_table funcionario_cpf_type;
+    i BINARY_INTEGER;
+BEGIN
+    i := 1;
+    FOR current_row IN (SELECT cpf FROM Funcionario) LOOP
+        funcionario_cpf_table(i) := current_row.cpf;
+        i := i + 1;
+    END LOOP;
+    FOR j IN 1..i-1 LOOP
+        DBMS_OUTPUT.Put_line(funcionario_cpf_table(j));
+    END LOOP;
+END funcionario_cpf_block;
