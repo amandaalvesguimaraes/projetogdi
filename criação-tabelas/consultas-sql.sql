@@ -85,3 +85,22 @@ para acesso de todos os usuarios, em seguida removendo o privilegio de deletar e
 para todos os usuarios*/
 GRANT ALL PRIVILEGES ON Pessoa TO PUBLIC;
 REVOKE DELETE, UPDATE ON Pessoa TO PUBLIC;
+
+/*Achar o nome de um cliente a partir do seu CPF*/
+SELECT Pessoa.Nome FROM Pessoa
+INNER JOIN Cliente ON (Pessoa.CPF = Cliente.CPF)
+WHERE Cliente.CPF = '123';
+
+/* Selecionar uma linha a partir de um CPF */
+SELECT * FROM Pessoa 
+WHERE Pessoa.CPF = '890';
+
+/* Encontrar um endereço a partir do CEP de uma Pessoa*/
+SELECT * FROM Endereco
+INNER JOIN Pessoa ON (Endereco.CEP = Pessoa.CEP)
+WHERE Pessoa.CEP = '115';
+
+/* testando cláusula BETWEEN e ORDER BY */
+select Nome_Pet FROM Consulta
+where Data_consulta BETWEEN to_date('16/11/21', 'DD/MM/YY') and to_date ('05/12/21', 'dd/mm/yy')
+ORDER BY Nome_Pet;
