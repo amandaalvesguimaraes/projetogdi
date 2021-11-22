@@ -93,7 +93,8 @@ CREATE TABLE Consulta (
     Cod_Produto INTEGER, 
     CONSTRAINT cpfvet_fkey FOREIGN KEY (CPF_Vet) REFERENCES Veterinario(CPF), 
     CONSTRAINT nomecpf_fkey FOREIGN KEY (CPF_Cliente, Nome_Pet) REFERENCES Pet(CPF_Cliente, Nome), 
-    CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(Codigo)
+    CONSTRAINT codproduto_fkey FOREIGN KEY (Cod_Produto) REFERENCES Produto(Codigo),
+    CONSTRAINT consulta_pkey PRIMARY KEY (CPF_Vet, Nome_Pet, CPF_Cliente)
 );
 
 
@@ -122,5 +123,6 @@ CREATE TABLE Atende (
     CONSTRAINT cpffunc_fkey_2 FOREIGN KEY (CPF_Func) REFERENCES Funcionario(CPF),  
     CONSTRAINT nomepet_fkey_2 FOREIGN KEY (CPF_Cliente, Nome_Pet) REFERENCES Pet(CPF_Cliente, Nome), 
     CONSTRAINT cpfcliente_fkey_2 FOREIGN KEY (CPF_Cliente) REFERENCES Cliente(CPF), 
-    CONSTRAINT tiposervico_fkey_2 FOREIGN KEY (Tipo_Servico) REFERENCES Servico(Tipo_Servico) 
+    CONSTRAINT tiposervico_fkey_2 FOREIGN KEY (Tipo_Servico) REFERENCES Servico(Tipo_Servico),
+    CONSTRAINT atende_pkey PRIMARY KEY (CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente) 
 );
