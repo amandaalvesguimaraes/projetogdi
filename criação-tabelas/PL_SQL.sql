@@ -121,3 +121,35 @@ EXCEPTION
     WHEN data_nascimento_pet_invalida THEN 
     Raise_application_error(-22983,'Data de nascimento do pet é inválida -' || 'Não é possível inserir Pets que ainda não nasceram.');
 END;
+
+
+--criando pacotes com procedimentos para inserção de produtos--
+
+CREATE OR REPLACE PACKAGE produtos AS
+PROCEDURE novoProduto(p_codigo Produto.Codigo%TYPE,
+    p_Preco Produto.Preco%TYPE,
+    p_Lote Produto.Lote%TYPE,
+    p_Estoque Produto.Estoque%TYPE,
+    p_Fabricacao Produto.Fabricacao%TYPE,
+    p_Validade Produto.Validade%TYPE,
+    p_Marca Produto.Marca%TYPE
+    p_Nome Produto.Nome%TYPE
+);
+END produtos;
+
+
+CREATE OR REPLACE PACKAGE BODY produtos AS
+PROCEDURE novoProduto(p_codigo Produto.Codigo%TYPE,
+    p_Preco Produto.Preco%TYPE,
+    p_Lote Produto.Lote%TYPE,
+    p_Estoque Produto.Estoque%TYPE,
+    p_Fabricacao Produto.Fabricacao%TYPE,
+    p_Validade Produto.Validade%TYPE,
+    p_Marca Produto.Marca%TYPE,
+    p_Nome Produto.Nome%TYPE
+) IS
+BEGIN
+    INSERT INTO Produto(Codigo, Preco, Lote, Estoque, Fabricacao, Validade, Marca, Nome) VALUES (p_Codigo, p_Preco, p_Lote, p_Estoque, p_Fabricacao, p_Validade, p_Marca, p_Nome);
+END novoProduto;
+
+END produtos;
