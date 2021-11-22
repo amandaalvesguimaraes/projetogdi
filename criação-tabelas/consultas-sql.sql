@@ -41,7 +41,7 @@ SELECT AVG(Produto.Preco) FROM Produto WHERE Produto.Marca IN ('FoodPet');
 --número de vezes que o cliente com o CPF 123 comprou
 SELECT COUNT(Compra.CPF_Cliente) FROM Compra WHERE Compra.CPF_Cliente = '123'; 
 
---seleciona o nome, o preço e a quantidade em estoque do produto que foi receitado para o(s) pet(s) do cliente de CPF 234 na data 22/11/2021
+--lista o nome, o preço e a quantidade em estoque do produto que foi receitado para os pets do cliente de CPF 234 na data 22/11/2021
 SELECT Produto.Nome, Produto.Preco, Produto.Estoque
 FROM Produto
 WHERE Produto.Codigo IN (SELECT Consulta.Cod_Produto FROM Consulta WHERE Consulta.CPF_Cliente = '234' AND Consulta.Data_Consulta = to_date('22/11/2021', 'dd/mm/yyyy'));
@@ -69,3 +69,8 @@ SELECT Produto.Nome, Produto.Preco
 FROM Produto
 WHERE Produto.Preco > (SELECT AVG(Produto.Preco) FROM Produto);
 
+--lista os produtos com os menores preços da marca FoodPet 
+SELECT * FROM Produto WHERE Produto.Preco <= ALL (SELECT Produto.Preco FROM Produto WHERE Marca IN ('FoodPet'));
+
+--lista os funcionários que não são veterinários que tem salários maiores que pelo menos 1 veterinário
+SELECT * FROM Funcionario WHERE Funcionario.Salario >= ANY (SELECT Funcionario.Salario FROM Funcionario WHERE Funcionario.CPF IN (SELECT Veterinario.CPF FROM Veterinario)) AND Funcionario.Cargo != 'Veterinário';
