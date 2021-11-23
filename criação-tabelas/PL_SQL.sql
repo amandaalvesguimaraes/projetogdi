@@ -174,17 +174,10 @@ END produtos;
 CREATE OR REPLACE FUNCTION Desconto (codigoProd Compra.Codigo_Produto%type)
 RETURN VARCHAR2
 IS
-    i INTEGER;
-    x INTEGER;
     aux_preco Produto.Preco%type;
     retorno VARCHAR2(255);
 BEGIN
-    i := 1;
-    SELECT COUNT(*) INTO x FROM Produto;
-    WHILE i < x LOOP 
-        SELECT Produto.Preco INTO aux_preco FROM Produto WHERE Produto.Codigo = codigoProd;
-        i := i + 1;
-    END LOOP;
+    SELECT Produto.Preco INTO aux_preco FROM Produto WHERE Produto.Codigo = codigoProd;
     CASE aux_preco
         WHEN 40 THEN
             retorno := 'Esse produto pode ter 5% de desconto.';
@@ -200,3 +193,47 @@ BEGIN
     RETURN retorno;
 END;
 
+/*Cursos com EXIT WHEN que reune informacoes de nome e data de nascimento dos pets*/
+DECLARE
+pet_name Pet.nome%TYPE;
+pet_data Pet.data_de_nascimento%TYPE;
+CURSOR cur_pet IS
+SELECT nome, Data_de_nascimento
+FROM Pet;
+
+BEGIN
+OPEN cur_pet;
+    LOOP
+    FETCH cur_pet INTO pet_name, pet_data;
+    EXIT WHEN cur_pet%NOTFOUND;
+    DBMS_OUTPUT.Put_line('Informações do pet:' || ' ' || pet_name || ' ' || pet_data);
+    END LOOP;
+CLOSE cur_pet;
+END;
+
+
+/*Funcao com WHILE LOOP que calcula o total gasto em compra de produtos por um cliente*/
+CREATE OR REPLACE FUNCTION TotalCompraCliente (cpfCliente Compra.CPF_Cliente%type)
+RETURN NUMBER
+IS
+    i INTEGER;
+    x INTEGER;
+    aux_preco Produto.Preco%type;
+    aux_produtos NUMBER;
+    aux_total_produtos NUMBER;
+    retorno VARCHAR2(255);
+BEGIN
+    i := 1;
+    aux_total_produtos := 0;
+    SELECT COUNT(*) INTO x FROM Produto;
+    WHILE i < x LOOP
+        SELECT Preco INTO aux_preco FROM Produto WHERE Produto.codigo = i;
+        SELECT COUNT(*) INTO aux_produtos FROM Compra WHERE Compra.CPF_Cliente = cpfCliente AND Compra.Codigo_Produto = i;
+
+        aux_total_produtos := aux_total_produtos + (aux_produtos * aux_preco);
+
+        i := i + 1;
+    END LOOP;
+    
+    RETURN aux_total_produtos;
+END;

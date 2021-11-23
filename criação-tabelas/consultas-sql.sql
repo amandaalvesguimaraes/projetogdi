@@ -80,12 +80,6 @@ SELECT * FROM Produto WHERE Produto.Preco <= ALL (SELECT Produto.Preco FROM Prod
 --lista os funcionários que não são veterinários que tem salários maiores que pelo menos 1 veterinário
 SELECT * FROM Funcionario WHERE Funcionario.Salario >= ANY (SELECT Funcionario.Salario FROM Funcionario WHERE Funcionario.CPF IN (SELECT Veterinario.CPF FROM Veterinario)) AND Funcionario.Cargo != 'Veterinário';
 
-/*Garantir todos os privilegios (inserir, atualizar, deletar, selecionar) da tabela Pessoa 
-para acesso de todos os usuarios, em seguida removendo o privilegio de deletar e atualizar na mesma tabela
-para todos os usuarios*/
-GRANT ALL PRIVILEGES ON Pessoa TO PUBLIC;
-REVOKE DELETE, UPDATE ON Pessoa TO PUBLIC;
-
 /*Achar o nome de um cliente a partir do seu CPF*/
 SELECT Pessoa.Nome FROM Pessoa
 INNER JOIN Cliente ON (Pessoa.CPF = Cliente.CPF)
@@ -104,3 +98,9 @@ WHERE Pessoa.CEP = '115';
 select Nome_Pet FROM Consulta
 where Data_consulta BETWEEN to_date('16/11/21', 'DD/MM/YY') and to_date ('05/12/21', 'dd/mm/yy')
 ORDER BY Nome_Pet;
+
+/*Garantir todos os privilegios (inserir, atualizar, deletar, selecionar) da tabela Pessoa 
+para acesso de todos os usuarios, em seguida removendo o privilegio de deletar e atualizar na mesma tabela
+para todos os usuarios*/
+GRANT ALL PRIVILEGES ON Pessoa TO PUBLIC;
+REVOKE DELETE, UPDATE ON Pessoa TO PUBLIC;
