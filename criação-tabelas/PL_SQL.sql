@@ -53,7 +53,7 @@ BEGIN
 END;
 
 --Inserir um novo pet na tabela Pet
-CREATE OR REPLACE PROCEDURE InsertPet (aux Pet%rowtype) IS
+CREATE OR REPLACE PROCEDURE InsertPet (aux IN Pet%rowtype) IS
 BEGIN
 INSERT INTO Pet (CPF_Cliente, Nome, Espécie, Raça, Cor, Data_de_nascimento) VALUES (aux.CPF_Cliente, aux.Nome, aux.Espécie, aux.Raça, aux.Cor, aux.Data_de_nascimento);
 END;
