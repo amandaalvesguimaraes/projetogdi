@@ -221,7 +221,7 @@ IS
     aux_preco Produto.Preco%type;
     aux_produtos NUMBER;
     aux_total_produtos NUMBER;
-    retorno VARCHAR2(255);
+    
 BEGIN
     i := 1;
     aux_total_produtos := 0;
