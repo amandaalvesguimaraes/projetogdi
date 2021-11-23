@@ -9,7 +9,7 @@ WHERE CPF = '678';
 
 /*Deletando um produto que nao vai ser mais vendido*/
 DELETE FROM Produto
-WHERE codigo = 3;
+WHERE codigo = 5;
 
 /*Criar um indice sobre o atributo salario de Funcionario
 pra agilizar a busca e ordenacao dos dados em tabelas*/
