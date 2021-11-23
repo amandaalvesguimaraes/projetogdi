@@ -169,3 +169,34 @@ BEGIN
 END novoProduto;
 
 END produtos;
+
+--Função que retorna se determinado produto de uma compra pode receber ou não desconto
+CREATE OR REPLACE FUNCTION Desconto (codigoProd Compra.Codigo_Produto%type)
+RETURN VARCHAR2
+IS
+    i INTEGER;
+    x INTEGER;
+    aux_preco Produto.Preco%type;
+    retorno VARCHAR2(255);
+BEGIN
+    i := 1;
+    SELECT COUNT(*) INTO x FROM Produto;
+    WHILE i < x LOOP 
+        SELECT Produto.Preco INTO aux_preco FROM Produto WHERE Produto.Codigo = codigoProd;
+        i := i + 1;
+    END LOOP;
+    CASE aux_preco
+        WHEN 40 THEN
+            retorno := 'Esse produto pode ter 5% de desconto.';
+        WHEN 50 THEN
+            retorno := 'Esse produto pode ter 10% de desconto.';
+        WHEN 70 THEN
+            retorno := 'Esse produto pode ter 15% de desconto.';
+        WHEN 80 THEN
+            retorno := 'Esse produto pode ter 20% de desconto.';
+        ELSE
+            retorno := 'Esse produto não recebe desconto.';
+    END CASE;
+    RETURN retorno;
+END;
+
