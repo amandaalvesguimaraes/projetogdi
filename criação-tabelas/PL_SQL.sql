@@ -148,7 +148,7 @@ PROCEDURE novoProduto(p_codigo Produto.Codigo%TYPE,
     p_Estoque Produto.Estoque%TYPE,
     p_Fabricacao Produto.Fabricacao%TYPE,
     p_Validade Produto.Validade%TYPE,
-    p_Marca Produto.Marca%TYPE
+    p_Marca Produto.Marca%TYPE,
     p_Nome Produto.Nome%TYPE
 );
 END produtos;
@@ -221,7 +221,7 @@ IS
     aux_preco Produto.Preco%type;
     aux_produtos NUMBER;
     aux_total_produtos NUMBER;
-    
+
 BEGIN
     i := 1;
     aux_total_produtos := 0;
