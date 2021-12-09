@@ -1,0 +1,41 @@
+DROP TABLE tb_Cliente;
+
+DROP TYPE tp_Cliente;
+DROP TYPE tp_Pessoa;
+
+--CRIAR TIPO ENDEREÇO QUE É ATRIBUTO DE PESSOA
+CREATE OR REPLACE TYPE tp_Endereco AS OBJECT (
+    Numero NUMBER,
+    CEP VARCHAR2 (255),
+    Cidade VARCHAR2 (255),
+    Rua VARCHAR2 (255),
+    Bairro VARCHAR2 (255),
+    Complemento VARCHAR2 (255)
+);
+/
+
+--CRIAR OS TIPOS PESSOA E CLIENTE 
+CREATE OR REPLACE TYPE tp_Pessoa AS OBJECT (
+    CPF CHAR(3),
+    Nome VARCHAR2 (255),
+    Email VARCHAR2 (255),
+    Data_Nascimento DATE,
+    --CEP VARCHAR2 (255)
+    Endereco tp_Endereco
+    -- MÉTODOS
+    --IMPLEMENTAR UM MÉTODO MAP
+) NOT FINAL NOT INSTANTIABLE;
+/
+
+-- HERANÇA DE TIPOS 
+CREATE TYPE tp_Cliente UNDER tp_Pessoa(
+    --CONSTRUCTOR FUNCTION tp_Cliente(x1 tp_Pessoa) RETURN SELF AS RESULT
+) NOT FINAL;
+
+/
+
+
+
+-- CRIAR TABELAS DE CLIENTE e ENDEREÇO
+CREATE TABLE tb_Cliente OF tp_Cliente (CPF PRIMARY KEY);
+CREATE TABLE tb_Endereco OF tp_Endereco (CEP PRIMARY KEY); 
