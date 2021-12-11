@@ -17,6 +17,18 @@ INSERT INTO tb_Endereco VALUES (tp_Endereco('118', 8, 'Recife', 'Rua Marechal Ma
 INSERT INTO tb_Endereco VALUES (tp_Endereco('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro',''));
 INSERT INTO tb_Endereco VALUES (tp_Endereco('110', 10, 'Recife', 'Rua da Hora', 'Espinheiro', 'Apartamento 302'));
 
--- CONSULTA OBJETOS EM tb_Cliente e tb_Endereco
+-- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Funcionario
+INSERT INTO tb_Funcionario VALUES (tp_Funcionario('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), tp_Endereco('116', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria',''), '101', 1200.00, 'Supervisor', to_date('05/08/2020', 'dd/mm/yy'), '678'));
+INSERT INTO tb_Funcionario VALUES (tp_Funcionario('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis',''), '102', 1200.00, 'Veterinário', to_date('05/10/2020', 'dd/mm/yy'), '678'));
+INSERT INTO tb_Funcionario VALUES (tp_Funcionario('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201'), '103', 2000.00, 'Veterinário', to_date('15/07/2021', 'dd/mm/yy'), '678'));
+INSERT INTO tb_Funcionario VALUES (tp_Funcionario('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), tp_Endereco('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro',''), '104', 1200.00, 'Atendente', to_date('25/07/2021', 'dd/mm/yy'), '678'));
+
+
+-- CONSULTAS
 SELECT * FROM tb_Cliente;
 SELECT * FROM tb_Endereco;
+SELECT * FROM tb_Funcionario;
+SELECT * FROM tb_Veterinario;
+SELECT * FROM tb_Servico;
+SELECT * FROM tb_Produto;
+SELECT * FROM tb_Telefone;
