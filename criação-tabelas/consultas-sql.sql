@@ -80,7 +80,6 @@ SELECT * FROM Produto WHERE Produto.Preco <= ALL (SELECT Produto.Preco FROM Prod
 --lista os funcionários que não são veterinários que tem salários maiores que pelo menos 1 veterinário
 SELECT * FROM Funcionario WHERE Funcionario.Salario >= ANY (SELECT Funcionario.Salario FROM Funcionario WHERE Funcionario.CPF IN (SELECT Veterinario.CPF FROM Veterinario)) AND Funcionario.Cargo != 'Veterinário';
 
-
 /*Achar o nome de um cliente a partir do seu CPF*/
 SELECT Pessoa.Nome FROM Pessoa
 INNER JOIN Cliente ON (Pessoa.CPF = Cliente.CPF)
