@@ -129,7 +129,7 @@ CREATE OR REPLACE TYPE tp_NumTelefone AS OBJECT (
 
 /
 
-CREATE OR REPLACE TYPE tp_ListaNumeros AS VARRAY(3) OF tp_NumTelefone; 
+CREATE OR REPLACE TYPE tp_ListaNumeros AS VARRAY(2) OF tp_NumTelefone; 
 
 /
 

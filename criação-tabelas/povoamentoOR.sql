@@ -89,6 +89,17 @@ INSERT INTO tb_Servico VALUES (tp_Servico('Tosa tesoura', '50'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Pacote completo', '100'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho antialérgico', '55'));
 
+-- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Telefone
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('985678455'), tp_NumTelefone('345798001')), '123'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('984563725'), tp_NumTelefone('375322784')), '234'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('998445609'), tp_NumTelefone('332243759')), '345'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('997874739'), tp_NumTelefone('997579739')), '456'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('981450988'), tp_NumTelefone('987005643')), '567'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('985664321'), tp_NumTelefone('307441139')), '678'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('980923455'), tp_NumTelefone('335698760')), '789'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('990998765'), tp_NumTelefone('991223245')), '890'));
+INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('992745566'), tp_NumTelefone('987653033')), '891'));
+
 -- CONSULTAS
 SELECT * FROM tb_Cliente;
 SELECT * FROM tb_Endereco;
