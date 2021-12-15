@@ -152,4 +152,3 @@ CREATE TABLE tb_Consulta OF tp_Consulta (Data_Consulta PRIMARY KEY);
 CREATE TABLE tb_Telefone OF tp_Telefone (CPF PRIMARY KEY);
 CREATE TABLE tb_Compra OF tp_Compra(CPF_Cliente PRIMARY KEY);
 CREATE TABLE tb_Atende OF tp_Atende(CPF_Func PRIMARY KEY);
-
