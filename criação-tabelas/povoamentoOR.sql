@@ -107,5 +107,5 @@ SELECT * FROM tb_Funcionario;
 SELECT * FROM tb_Veterinario;
 SELECT * FROM tb_Servico;
 SELECT * FROM tb_Produto;
-SELECT * FROM tb_Telefone;
+SELECT * FROM tb_Telefone T, TABLE(T.Num_telefone);
 SELECT * FROM tb_Compra;
