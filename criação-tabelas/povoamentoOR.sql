@@ -100,6 +100,31 @@ INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('9809
 INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('990998765'), tp_NumTelefone('991223245')), '890'));
 INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('992745566'), tp_NumTelefone('987653033')), '891'));
 
+-- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Pet
+INSERT INTO tb_Pet VALUES (tp_Pet('123', 'Tutty', 'Cachorro', 'Cocker Spaniel', 'Branca', to_date('15/12/2010', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (tp_Pet('234', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/10/2016', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (tp_Pet('234', 'Nala', 'Cachorro', 'Yorkshire', 'Cinza', to_date('26/10/2018', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (tp_Pet('345', 'Lilica', 'Cachorro', 'Lhasa apso', 'Preta', to_date('17/04/2004', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (tp_Pet('456', 'Lupe', 'Cachorro,', 'Yorkshire', 'Preta', to_date('16/11/2011', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (tp_Pet('567', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/12/2020', 'dd/mm/yyyy')));
+
+-- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Atende
+INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Luna', 'Banho Pequeno', '234', to_date('17/11/2021', 'dd/mm/yyyy'), '14:20'));
+INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Nala', 'Tosa Higiênica', '234', to_date('02/12/2021', 'dd/mm/yyyy'), '15:02'));
+INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lupe', 'Tosa Máquina', '456', to_date('10/12/2021', 'dd/mm/yyyy'), '09:30'));
+INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Tutty', 'Tosa Tesoura', '123', to_date('25/11/2021', 'dd/mm/yyyy'), '17:00'));
+INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lilica', 'Hidratação', '345', to_date('13/12/2021', 'dd/mm/yyyy'), '12:45'));
+INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Luna', 'Banho Antialérgico', '567', to_date('09/12/2021', 'dd/mm/yyyy'), '10:10'));
+INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lupe', 'Banho Grande', '456', to_date('03/11/2021', 'dd/mm/yyyy'), '11:30'));
+
+-- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Consulta
+INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Tutty', '123', to_date('16/11/2021', 'dd/mm/yyyy'), '10:00', NULL));
+INSERT INTO tb_Consulta VALUES (tp_Consulta('789', 'Luna', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:00', 003));
+INSERT INTO tb_Consulta VALUES (tp_Consulta('789', 'Nala', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:30', 004));
+INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Lilica', '345', to_date('10/12/2021', 'dd/mm/yyyy'), '11:00', NULL));
+INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Lupe', '456', to_date('05/12/2021', 'dd/mm/yyyy'), '09:15', 026));
+INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Luna', '567', to_date('30/11/2021', 'dd/mm/yyyy'), '17:00', 013));
+
 -- CONSULTAS
 SELECT * FROM tb_Cliente;
 SELECT * FROM tb_Endereco;
@@ -109,3 +134,6 @@ SELECT * FROM tb_Servico;
 SELECT * FROM tb_Produto;
 SELECT * FROM tb_Telefone T, TABLE(T.Num_telefone);
 SELECT * FROM tb_Compra;
+SELECT * FROM tb_Pet;
+SELECT * FROM tb_Atende;
+SELECT * FROM tb_Consulta;
