@@ -56,7 +56,7 @@ CREATE TYPE tp_Veterinario UNDER tp_Funcionario (
 /
 --CRIAR TIPOS PET, SERVIÇO, PRODUTO, ATENDE, CONSULTA E COMPRA
 CREATE OR REPLACE TYPE tp_Pet AS OBJECT ( 
-    Cliente tp_Cliente, 
+    CPF_Cliente CHAR(3), 
     Nome VARCHAR2 (255), 
     Espécie VARCHAR2 (255), 
     Raça VARCHAR2 (255), 
@@ -145,10 +145,18 @@ CREATE TABLE tb_Cliente OF tp_Cliente (CPF PRIMARY KEY);
 CREATE TABLE tb_Endereco OF tp_Endereco (CEP PRIMARY KEY);
 CREATE TABLE tb_Funcionario OF tp_Funcionario (CPF PRIMARY KEY);
 CREATE TABLE tb_Veterinario OF tp_Veterinario (CPF PRIMARY KEY);
-CREATE TABLE tb_Pet OF tp_Pet (Nome PRIMARY KEY);
+CREATE TABLE tb_Pet OF tp_Pet (
+    CONSTRAINT nome_pkey PRIMARY KEY (CPF_Cliente, Nome)
+);
 CREATE TABLE tb_Servico OF tp_Servico (Tipo_Servico PRIMARY KEY);
 CREATE TABLE tb_Produto OF tp_Produto (Codigo PRIMARY KEY);
-CREATE TABLE tb_Consulta OF tp_Consulta (Data_Consulta PRIMARY KEY);
+CREATE TABLE tb_Consulta OF tp_Consulta (
+    CONSTRAINT consulta_pkey PRIMARY KEY (CPF_Vet, Nome_Pet, CPF_Cliente)
+);
 CREATE TABLE tb_Telefone OF tp_Telefone (CPF PRIMARY KEY);
-CREATE TABLE tb_Compra OF tp_Compra(CPF_Cliente PRIMARY KEY);
-CREATE TABLE tb_Atende OF tp_Atende(CPF_Func PRIMARY KEY);
+CREATE TABLE tb_Compra OF tp_Compra(
+    CONSTRAINT compra_pkey PRIMARY KEY (CPF_Cliente, Codigo_Produto)
+);
+CREATE TABLE tb_Atende OF tp_Atende(
+    CONSTRAINT atende_pkey PRIMARY KEY (CPF_Func, Nome_Pet, Tipo_Servico, CPF_Cliente)
+);
