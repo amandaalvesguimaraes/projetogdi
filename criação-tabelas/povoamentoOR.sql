@@ -79,7 +79,7 @@ INSERT INTO tb_Compra VALUES (tp_Compra('567', 022, to_date('24/10/2021', 'dd/mm
 INSERT INTO tb_Compra VALUES (tp_Compra('567', 014, to_date('25/10/2021', 'dd/mm/yyyy'), '09:48'));
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Servico
-INSERT INTO tb_Servico VALUES (tp_Servico('Banho pequeno', 30));
+INSERT INTO tb_Servico VALUES (tp_Servico('Banho pequeno', '30'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho medio', '40'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho grande', '50'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Hidratação', '37'));
@@ -128,7 +128,7 @@ INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Luna', '567', to_date('30/11
 -- CONSULTAS
 SELECT * FROM tb_Cliente;
 SELECT * FROM tb_Endereco;
-SELECT * FROM tb_Funcionario;
+SELECT * FROM tb_Funcionario; --ta dando erro a visualização por ter uma REF
 SELECT * FROM tb_Veterinario;
 SELECT * FROM tb_Servico;
 SELECT * FROM tb_Produto;
