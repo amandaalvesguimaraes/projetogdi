@@ -30,7 +30,7 @@ CREATE OR REPLACE TYPE tp_Pessoa AS OBJECT (
 -- HERANÇA DE TIPOS 
 CREATE TYPE tp_Cliente UNDER tp_Pessoa( 
     --CONSTRUCTOR FUNCTION tp_Cliente(x1 tp_Pessoa) RETURN SELF AS RESULT 
-) NOT FINAL; 
+); 
  
 
 /
@@ -40,10 +40,10 @@ CREATE TYPE tp_Funcionario UNDER tp_Pessoa (
     Salario int, 
     Cargo VARCHAR2 (255), 
     Data_de_admissao date, 
-    CPF_Supervisor CHAR (3), 
+    supervisor REF tp_Funcionario, 
  
     CONSTRUCTOR FUNCTION tp_Funcionario(x1 tp_Pessoa) RETURN SELF AS RESULT 
-) NOT FINAL; 
+)NOT FINAL; 
 
 /
 --CRIAR TIPO VETERINÁRIO QUE HERDA DE FUNCIONÁRIO
@@ -61,7 +61,7 @@ CREATE OR REPLACE TYPE tp_Pet AS OBJECT (
     Espécie VARCHAR2 (255), 
     Raça VARCHAR2 (255), 
     Cor VARCHAR2 (255), 
-    Data_de_nascimento DATE 
+    Data_de_nascimento DATE
     --MÉTODOS 
 ); 
 
@@ -141,19 +141,63 @@ CREATE OR REPLACE TYPE tp_Telefone AS OBJECT (
 
 /
 -- CRIAÇÃO DE TABELAS
-CREATE TABLE tb_Cliente OF tp_Cliente (CPF PRIMARY KEY);
-CREATE TABLE tb_Endereco OF tp_Endereco (CEP PRIMARY KEY);
-CREATE TABLE tb_Funcionario OF tp_Funcionario (CPF PRIMARY KEY);
-CREATE TABLE tb_Veterinario OF tp_Veterinario (CPF PRIMARY KEY);
-CREATE TABLE tb_Pet OF tp_Pet (
-    CONSTRAINT nome_pkey PRIMARY KEY (CPF_Cliente, Nome)
+CREATE TABLE tb_Cliente OF tp_Cliente (
+    CPF PRIMARY KEY
 );
-CREATE TABLE tb_Servico OF tp_Servico (Tipo_Servico PRIMARY KEY);
-CREATE TABLE tb_Produto OF tp_Produto (Codigo PRIMARY KEY);
+
+CREATE TABLE tb_Endereco OF tp_Endereco (
+    CEP PRIMARY KEY,
+    Numero NOT NULL,
+    Cidade NOT NULL,
+    Rua NOT NULL,
+    Bairro NOT NULL
+);
+
+CREATE TABLE tb_Funcionario OF tp_Funcionario (
+    CPF PRIMARY KEY,
+    Salario NOT NULL,
+    Cargo NOT NULL,
+    Data_de_admissao NOT NULL,
+    Matricula NOT NULL
+);
+
+CREATE TABLE tb_Veterinario OF tp_Veterinario (
+    CPF PRIMARY KEY,
+    Numero_CRMV NOT NULL
+);
+
+CREATE TABLE tb_Pet OF tp_Pet (
+    CPF_Cliente NOT NULL,
+    Nome NOT NULL,
+    Espécie NOT NULL,
+    Raça NOT NULL,
+    Cor NOT NULL,
+    Data_de_nascimento NOT NULL,
+    CONSTRAINT pet_pkey PRIMARY KEY (Nome, CPF_Cliente)
+);
+
+CREATE TABLE tb_Servico OF tp_Servico (
+    Tipo_Servico PRIMARY KEY,
+    Preco_Servico NOT NULL
+);
+
+CREATE TABLE tb_Produto OF tp_Produto (
+    Codigo PRIMARY KEY,
+    Preco NOT NULL,
+    Lote NOT NULL,
+    Estoque NOT NULL,
+    Marca NOT NULL,
+    Nome NOT NULL
+);
+
 CREATE TABLE tb_Consulta OF tp_Consulta (
     CONSTRAINT consulta_pkey PRIMARY KEY (CPF_Vet, Nome_Pet, CPF_Cliente)
 );
-CREATE TABLE tb_Telefone OF tp_Telefone (CPF PRIMARY KEY);
+CREATE TABLE tb_Telefone OF tp_Telefone (
+    CPF PRIMARY KEY,
+    Num_telefone NOT NULL
+);
+
 CREATE TABLE tb_Compra OF tp_Compra(
     CONSTRAINT compra_pkey PRIMARY KEY (CPF_Cliente, Codigo_Produto)
 );
