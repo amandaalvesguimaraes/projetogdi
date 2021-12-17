@@ -20,10 +20,8 @@ CREATE OR REPLACE TYPE tp_Pessoa AS OBJECT (
     Nome VARCHAR2 (255), 
     Email VARCHAR2 (255), 
     Data_Nascimento DATE, 
-    --CEP VARCHAR2 (255) 
     Endereco tp_Endereco 
     -- MÉTODOS 
-    --IMPLEMENTAR UM MÉTODO MAP 
 ) NOT FINAL NOT INSTANTIABLE; 
 
 /
@@ -37,15 +35,18 @@ CREATE TYPE tp_Cliente UNDER tp_Pessoa(
 --CRIAR TIPO FUNCIONARIO QUE HERDA DE PESSOA
 CREATE TYPE tp_Funcionario UNDER tp_Pessoa ( 
     Matricula VARCHAR2 (255), 
-    Salario int, 
+    Salario INT, 
     Cargo VARCHAR2 (255), 
     Data_de_admissao date, 
     supervisor REF tp_Funcionario, 
  
-    CONSTRUCTOR FUNCTION tp_Funcionario(x1 tp_Pessoa) RETURN SELF AS RESULT 
+    CONSTRUCTOR FUNCTION tp_Funcionario(x1 tp_Pessoa) RETURN SELF AS RESULT
+
 )NOT FINAL; 
 
 /
+
+
 --CRIAR TIPO VETERINÁRIO QUE HERDA DE FUNCIONÁRIO
 CREATE TYPE tp_Veterinario UNDER tp_Funcionario (  
     Numero_CRMV VARCHAR2 (255), 
@@ -107,9 +108,20 @@ CREATE OR REPLACE TYPE tp_Consulta AS OBJECT (
     CPF_Cliente CHAR (3), 
     Data_Consulta DATE, 
     Hora_Consulta VARCHAR2 (255), 
-    Cod_Produto INTEGER 
+    Cod_Produto INTEGER, 
     --MÉTODOS 
+    MAP MEMBER FUNCTION comparaData RETURN DATE
 ); 
+
+/
+
+CREATE OR REPLACE TYPE BODY tp_Consulta AS 
+MAP MEMBER FUNCTION comparaData RETURN DATE IS 
+  p DATE := Data_Consulta;
+    BEGIN
+        RETURN p;
+    END;
+END;
 
 /
 
@@ -117,11 +129,25 @@ CREATE OR REPLACE TYPE tp_Compra AS OBJECT (
     CPF_Cliente CHAR(3), 
     Codigo_Produto INTEGER, 
     Data_Compra DATE, 
-    Hora_Compra VARCHAR2 (255) 
+    Hora_Compra VARCHAR2 (255), 
     --MÉTODOS 
+    MEMBER PROCEDURE exibir_detalhes
 ); 
 
 /
+
+CREATE OR REPLACE TYPE BODY tp_Compra AS
+MEMBER PROCEDURE exibir_detalhes IS
+    BEGIN
+        DBMS.OUTPUT.PUT_LINE('Detalhes da compra');
+        DBMS.OUTPUT.PUT_LINE('CPF Cliente: ' || CPF_Cliente);
+        DBMS.OUTPUT.PUT_LINE('Produto comprado: ' || TO_CHAR(Cod_Produto));
+        DBMS.OUTPUT.PUT_LINE('Data da compra: '|| TO_CHAR(Data_Compra) || Hora_Compra);
+    END;
+END;
+
+/
+
 --CRIAR TIPO TELEFONE
 CREATE OR REPLACE TYPE tp_NumTelefone AS OBJECT ( 
     Numero VARCHAR2 (9) 
@@ -158,7 +184,8 @@ CREATE TABLE tb_Funcionario OF tp_Funcionario (
     Salario NOT NULL,
     Cargo NOT NULL,
     Data_de_admissao NOT NULL,
-    Matricula NOT NULL
+    Matricula NOT NULL,
+    supervisor SCOPE IS tb_Funcionario
 );
 
 CREATE TABLE tb_Veterinario OF tp_Veterinario (
