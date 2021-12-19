@@ -14,13 +14,16 @@ CREATE OR REPLACE TYPE tp_Endereco AS OBJECT (
 ); 
 /
 
+CREATE OR REPLACE TYPE tp_lista_endereco AS TABLE OF tp_Endereco;
+/
+
 --CRIAR OS TIPOS PESSOA E CLIENTE 
 CREATE OR REPLACE TYPE tp_Pessoa AS OBJECT ( 
     CPF CHAR(3), 
     Nome VARCHAR2 (255), 
     Email VARCHAR2 (255), 
     Data_Nascimento DATE, 
-    Endereco tp_Endereco 
+    Endereco tp_lista_endereco 
     -- MÉTODOS 
 ) NOT FINAL NOT INSTANTIABLE; 
 
@@ -166,10 +169,14 @@ CREATE OR REPLACE TYPE tp_Telefone AS OBJECT (
 ); 
 
 /
+
 -- CRIAÇÃO DE TABELAS
+
+/*CREATE TABLE tb_Pessoa OF tp_Pessoa NESTED TABLE Endereco STORE AS nt_endereco;*/
+
 CREATE TABLE tb_Cliente OF tp_Cliente (
     CPF PRIMARY KEY
-);
+) NESTED TABLE Endereco STORE AS nt_endereco_cliente;
 
 CREATE TABLE tb_Endereco OF tp_Endereco (
     CEP PRIMARY KEY,
@@ -186,12 +193,12 @@ CREATE TABLE tb_Funcionario OF tp_Funcionario (
     Data_de_admissao NOT NULL,
     Matricula NOT NULL,
     supervisor SCOPE IS tb_Funcionario
-);
+) NESTED TABLE Endereco STORE AS nt_endereco_funcionario;
 
 CREATE TABLE tb_Veterinario OF tp_Veterinario (
     CPF PRIMARY KEY,
     Numero_CRMV NOT NULL
-);
+) NESTED TABLE Endereco STORE AS nt_endereco_veterinario;
 
 CREATE TABLE tb_Pet OF tp_Pet (
     CPF_Cliente NOT NULL,
