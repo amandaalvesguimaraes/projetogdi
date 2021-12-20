@@ -10,3 +10,22 @@ BEGIN
 END;
 
 /
+
+DECLARE
+    aux NUMBER;
+    servico1 tp_Servico;
+    servico2 tp_Servico;
+BEGIN
+    SELECT VALUE (S) INTO servico1 FROM tb_Servico S WHERE tipo_servico = 'Banho pequeno';
+    SELECT VALUE (S) INTO servico2 FROM tb_Servico S WHERE tipo_servico = 'Tosa tesoura';
+    aux := servico1.comparaServico(servico2);
+
+    IF aux = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Os produtos têm o mesmo preço');
+    ELSIF aux = -1 THEN
+        DBMS_OUTPUT.PUT_LINE('O produto ' || TO_CHAR(servico2.tipo_servico) || ' é mais caro.');
+    ELSE 
+         DBMS_OUTPUT.PUT_LINE('O produto ' || TO_CHAR(servico1.tipo_servico) || ' é mais caro.');
+    END IF;
+END;
+    

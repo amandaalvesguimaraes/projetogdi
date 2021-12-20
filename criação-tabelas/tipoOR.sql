@@ -83,11 +83,29 @@ ALTER TYPE tp_pet ADD ATTRIBUTE (dono REF tp_Cliente) CASCADE;
 
 /
 
+
 CREATE OR REPLACE TYPE tp_Servico AS OBJECT ( 
     Tipo_Servico VARCHAR2 (255), 
-    Preco_Servico NUMBER 
+    Preco_Servico NUMBER, 
     --MÉTODOS 
+    ORDER MEMBER FUNCTION comparaServico (SELF IN OUT NOCOPY tp_Servico, x tp_Servico) RETURN NUMBER
 ); 
+
+/
+
+CREATE OR REPLACE TYPE BODY tp_Servico AS 
+    ORDER MEMBER FUNCTION comparaServico(SELF IN OUT NOCOPY tp_Servico, x tp_Servico) RETURN NUMBER IS
+    BEGIN
+        IF SELF.Preco_Servico > x.Preco_Servico THEN
+            RETURN 1;
+        ELSIF SELF.Preco_Servico < x.Preco_Servico THEN
+            RETURN -1;
+        ELSE
+            RETURN 0;
+        END IF;
+    END;
+END;
+
 
 /
 
