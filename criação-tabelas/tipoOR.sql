@@ -99,9 +99,35 @@ CREATE OR REPLACE TYPE tp_Produto AS OBJECT (
     Fabricacao DATE,  
     Validade DATE,  
     Marca VARCHAR2 (255),  
-    Nome VARCHAR2 (255) 
+    Nome VARCHAR2 (255),
     --MÉTODOS 
+    FINAL MEMBER PROCEDURE exibir_detalhes
 ); 
+
+/
+
+CREATE OR REPLACE TYPE BODY tp_Produto AS
+FINAL MEMBER PROCEDURE exibir_detalhes IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Codigo: ' || TO_CHAR(Codigo));
+        DBMS_OUTPUT.PUT_LINE('Nome: ' || Nome);
+        DBMS_OUTPUT.PUT_LINE('Preco: ' || TO_CHAR(Preco));
+        DBMS_OUTPUT.PUT_LINE('Lote: ' || Lote);
+        DBMS_OUTPUT.PUT_LINE('Quantidade em estoque: ' || TO_CHAR(Estoque));
+        DBMS_OUTPUT.PUT_LINE('Data de validade: ' || TO_CHAR(Validade));
+    END;
+END;
+/
+
+DECLARE
+    item1 tp_Produto;
+    item2 tp_Produto;
+BEGIN
+    SELECT VALUE(p) INTO item FROM tb_Produto p WHERE Codigo = '1';
+    item1.exibir_detalhes();
+    SELECT VALUE(o) INTO item FROM tb_Produto o WHERE Codigo = '2';
+    item2.exibir_detalhes();
+END;
 
 /
 
