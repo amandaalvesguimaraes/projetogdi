@@ -166,8 +166,8 @@ INSERT INTO tb_Servico VALUES (tp_Servico('Banho pequeno', '30'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho medio', '40'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho grande', '50'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Hidratação', '37'));
-INSERT INTO tb_Servico VALUES (tp_Servico('Tosa Higihênica', '25'));
-INSERT INTO tb_Servico VALUES (tp_Servico('Tosa Máquina', '35'));
+INSERT INTO tb_Servico VALUES (tp_Servico('Tosa higiênica', '25'));
+INSERT INTO tb_Servico VALUES (tp_Servico('Tosa máquina', '35'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Tosa tesoura', '50'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Pacote completo', '100'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho antialérgico', '55'));
@@ -214,7 +214,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Pequeno'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho pequeno'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
         to_date('17/11/2021', 'dd/mm/yyyy'))
         );
@@ -223,7 +223,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Nala'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Higiênica'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa higiênica'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
         to_date('02/12/2021', 'dd/mm/yyyy'))
         );
@@ -232,7 +232,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lupe'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Máquina'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa máquina'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'),
         to_date('10/12/2021', 'dd/mm/yyyy'))
         );
@@ -241,7 +241,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Tutty'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Tesoura'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa tesoura'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'),
         to_date('25/11/2021', 'dd/mm/yyyy'))
         );
@@ -259,7 +259,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Antialérgico'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho antialérgico'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '567'),
         to_date('09/12/2021', 'dd/mm/yyyy'))
         );
@@ -268,7 +268,7 @@ INSERT INTO tb_Atende VALUES (
     tp_Atende(
         (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
         (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lupe'),
-        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Grande'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho grande'),
         (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'),
         to_date('03/11/2021', 'dd/mm/yyyy'))
         );
@@ -327,13 +327,13 @@ INSERT INTO tb_Consulta VALUES (
         to_date('30/11/2021', 'dd/mm/yyyy'))
         );
 
--- CONSULTAS
-SELECT * FROM tb_Cliente;
-SELECT * FROM tb_Funcionario; --ta dando erro a visualização por ter uma REF
-SELECT * FROM tb_Veterinario; --deref
+-- CONSULTAS DE TODOS OS DADOS DE TODAS AS TABELAS
+SELECT C.CPF, C.Nome, C.Email, C.Data_Nascimento, E.*, T.* FROM tb_Cliente C, TABLE(C.Endereco) E, TABLE(C.Telefone) T;
+SELECT F.CPF, F.Nome, F.Email, F.Data_nascimento, E.*, T.*, F.Matricula, F.Salario, F.Cargo, F.Data_de_admissao, DEREF(F.supervisor).CPF FROM tb_Funcionario F, TABLE(F.Endereco) E, TABLE(F.Telefone) T;
+SELECT V.CPF, V.Nome, V.Email, V.Data_nascimento, E.*, T.*, V.Matricula, V.Salario, V.Cargo, V.Data_de_admissao, DEREF(V.supervisor).CPF, V.Numero_CRMV FROM tb_Veterinario V, TABLE(V.Endereco) E, TABLE(V.Telefone) T;
 SELECT * FROM tb_Servico; 
 SELECT * FROM tb_Produto;
-SELECT * FROM tb_Compra; --deref
-SELECT * FROM tb_Pet; --deref
-SELECT * FROM tb_Atende; --deref
-SELECT * FROM tb_Consulta; --deref
+SELECT DEREF(C.cliente).CPF, DEREF(C.produto).Codigo, C.dt_compra FROM tb_Compra C;
+SELECT P.Nome, P.Espécie, P.Raça, P.Cor, P.Data_de_nascimento, DEREF(P.dono).CPF FROM tb_Pet P;
+SELECT DEREF(A.funcionario).CPF, DEREF(A.pet).Nome, DEREF(A.servico).Tipo_servico, DEREF(A.cliente).CPF, A.dt_atendimento FROM tb_Atende A;
+SELECT DEREF(C.veterinario).Numero_CRMV, DEREF(C.pet).Nome, DEREF(C.cliente).CPF, DEREF(C.produto).Codigo, C.dt_consulta FROM tb_Consulta C;
