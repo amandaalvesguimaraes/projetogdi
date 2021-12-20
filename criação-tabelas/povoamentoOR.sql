@@ -1,34 +1,91 @@
 CREATE SEQUENCE seq INCREMENT by 1 START WITH 1;
-/
+
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Cliente
-INSERT INTO tb_Cliente VALUES (tp_Cliente('123', 'Amanda', 'amanda@email.com', to_date('01/03/2001', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('111', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte',''))));
-INSERT INTO tb_Cliente VALUES (tp_Cliente('234', 'Thaís', 'thais@email.com', to_date('16/07/2001', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('112', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601'))));
-INSERT INTO tb_Cliente VALUES (tp_Cliente('345', 'Isabela', 'isabela@email.com', to_date('26/08/1999', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('113', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte',''), tp_Endereco('796', 10, 'Recife', 'Rua Desembargador João Paes', 'Boa Viagem', 'Apartamento 1601'))));
-INSERT INTO tb_Cliente VALUES (tp_Cliente('456', 'Lorena', 'lorena@email.com', to_date('28/07/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('114', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau',''))));
-INSERT INTO tb_Cliente VALUES (tp_Cliente('567', 'Daniel', 'daniel@email.com', to_date('13/10/1998', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('115', 5, 'Recife', 'Rua General Polidoro', 'Várzea',''), tp_Endereco('99', 11, 'Petrolina', 'Rua da Aurora', 'Centro', ''))));
+INSERT INTO tb_Cliente VALUES (
+    tp_Cliente('123', 'Amanda', 'amanda@email.com', to_date('01/03/2001', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('111', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte','')),
+    tp_Telefones(tp_NumTelefone('999999999')))
+    );
 
--- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Endereco
-INSERT INTO tb_Endereco VALUES (tp_Endereco('111', 1, 'Recife', 'Rua Jornalista Guerra de Holanda', 'Casa Forte',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('112', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601'));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('113', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('114', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('115', 5, 'Recife', 'Rua General Polidoro', 'Várzea',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('116', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201'));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro',''));
-INSERT INTO tb_Endereco VALUES (tp_Endereco('110', 10, 'Recife', 'Rua da Hora', 'Espinheiro', 'Apartamento 302'));
+INSERT INTO tb_Cliente VALUES (
+    tp_Cliente('234', 'Thaís', 'thais@email.com', to_date('16/07/2001', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('112', 2, 'Caruaru', 'Avenida Leão Dourado', 'Kennedy','Apartamento 601')),
+    tp_Telefones(tp_NumTelefone('969999999')))
+    );
+
+INSERT INTO tb_Cliente VALUES (
+    tp_Cliente('345', 'Isabela', 'isabela@email.com', to_date('26/08/1999', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('113', 3, 'Recife', 'Avenida 17 de Agosto', 'Casa Forte','')),
+    tp_Telefones(tp_NumTelefone('922999999')))
+    );
+
+INSERT INTO tb_Cliente VALUES (
+    tp_Cliente('456', 'Lorena', 'lorena@email.com', to_date('28/07/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('114', 4, 'Caruaru', 'Avenida Agamenon Magalhães', 'Mauricio de Nassau','')),
+    tp_Telefones(tp_NumTelefone('999999119')))
+    );
+
+INSERT INTO tb_Cliente VALUES (
+    tp_Cliente('567', 'Daniel', 'daniel@email.com', to_date('13/10/1998', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('115', 5, 'Recife', 'Rua General Polidoro', 'Várzea','')),
+    tp_Telefones(tp_NumTelefone('999999991')))
+    );
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Funcionario
-INSERT INTO tb_Funcionario VALUES (tp_Funcionario('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('116', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria','')), '101', 1200.00, 'Supervisor', to_date('05/08/2020', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678')));
-INSERT INTO tb_Funcionario VALUES (tp_Funcionario('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','')), '102', 1200.00, 'Veterinário', to_date('05/10/2020', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678')));
-INSERT INTO tb_Funcionario VALUES (tp_Funcionario('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')), '103', 2000.00, 'Veterinário', to_date('15/07/2021', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678')));
-INSERT INTO tb_Funcionario VALUES (tp_Funcionario('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro','')), '104', 1200.00, 'Atendente', to_date('25/07/2021', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678')));
+INSERT INTO tb_Funcionario VALUES (
+    tp_Funcionario('678', 'Alice', 'alice@email.com', to_date('13/03/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('116', 6, 'Recife', 'Rua Jornalista Aníbal Fernandes', 'Cidade Universitaria','')),
+    tp_Telefones(tp_NumTelefone('999999921')), 
+    '101', 1200.00, 'Supervisor', 
+    to_date('05/08/2020', 'dd/mm/yy'), 
+   NULL)
+   );
+
+INSERT INTO tb_Funcionario VALUES (
+    tp_Funcionario('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','')), 
+    tp_Telefones(tp_NumTelefone('129999921')), 
+    '102', 1200.00, 'Veterinário', 
+    to_date('05/10/2020', 'dd/mm/yy'), 
+    (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'))
+    );
+
+INSERT INTO tb_Funcionario VALUES (
+    tp_Funcionario('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')), 
+    tp_Telefones(tp_NumTelefone('129999121')),
+    '103', 2000.00, 'Veterinário', 
+    to_date('15/07/2021', 'dd/mm/yy'), 
+    (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'))
+    );
+
+INSERT INTO tb_Funcionario VALUES (
+    tp_Funcionario('891', 'Caio', 'caio@email.com', to_date('10/03/1995', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('119', 9, 'Recife', 'Rua da Hora', 'Espinheiro','')),
+     tp_Telefones(tp_NumTelefone('123999121')), 
+    '104', 1200.00, 'Atendente', 
+    to_date('25/07/2021', 'dd/mm/yy'), 
+    (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'))
+    );
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Veterinario
-INSERT INTO tb_Veterinario VALUES (tp_Veterinario('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','')), '102', 1200.00, 'Veterinário', to_date('05/10/2020', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'), '0005'));
-INSERT INTO tb_Veterinario VALUES (tp_Veterinario('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), tp_lista_endereco(tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')), '103', 2000.00, 'Veterinário', to_date('15/07/2021', 'dd/mm/yy'), (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'), '0006'));
+INSERT INTO tb_Veterinario VALUES (
+    tp_Veterinario('789', 'Rafaela', 'rafaela@email.com', to_date('15/06/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('117', 7, 'Caruaru', 'Rua Bahia', 'Divinopolis','')), 
+    tp_Telefones(tp_NumTelefone('123499121')), 
+    '102', 1200.00, 'Veterinário', 
+    to_date('05/10/2020', 'dd/mm/yy'), 
+    (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'), '0005')
+    );
+
+INSERT INTO tb_Veterinario VALUES (
+    tp_Veterinario('890', 'Henrique', 'henrique@email.com', to_date('13/08/2000', 'dd/mm/yy'), 
+    tp_lista_endereco(tp_Endereco('118', 8, 'Recife', 'Rua Marechal Manoel Luis Osorio', 'Varzea', 'Apartamento 201')), 
+    tp_Telefones(tp_NumTelefone('123459121')), 
+    '103', 2000.00, 'Veterinário', 
+    to_date('15/07/2021', 'dd/mm/yy'), 
+    (SELECT REF(P) FROM tb_funcionario P WHERE P.CPF ='678'), '0006'));
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Produto
 INSERT INTO tb_Produto VALUES (tp_Produto(seq.NEXTVAL, 15, '1110', 20, to_date('11/05/2021', 'dd/mm/yyyy'), to_date('01/05/2022', 'dd/mm/yyyy'), 'LimpaPet', 'Shampoo'));
@@ -62,21 +119,47 @@ INSERT INTO tb_Produto VALUES (tp_Produto(seq.NEXTVAL, 25, '1137', 24, NULL, NUL
 INSERT INTO tb_Produto VALUES (tp_Produto(seq.NEXTVAL, 15, '1138', 13, NULL, NULL, 'FoodPet', 'Recipiente para comida'));
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Compra
-INSERT INTO tb_Compra VALUES (tp_Compra('123', 001, to_date('01/10/2021', 'dd/mm/yyyy'), '13:20'));
-INSERT INTO tb_Compra VALUES (tp_Compra('123', 010, to_date('02/10/2021', 'dd/mm/yyyy'), '10:00'));
-INSERT INTO tb_Compra VALUES (tp_Compra('123', 020, to_date('05/11/2021', 'dd/mm/yyyy'), '11:40'));
-INSERT INTO tb_Compra VALUES (tp_Compra('234', 012, to_date('15/10/2021', 'dd/mm/yyyy'), '18:00'));
-INSERT INTO tb_Compra VALUES (tp_Compra('234', 009, to_date('07/11/2021', 'dd/mm/yyyy'), '15:14'));
-INSERT INTO tb_Compra VALUES (tp_Compra('234', 017, to_date('09/10/2021', 'dd/mm/yyyy'), '10:06'));
-INSERT INTO tb_Compra VALUES (tp_Compra('345', 015, to_date('20/10/2021', 'dd/mm/yyyy'), '16:10'));
-INSERT INTO tb_Compra VALUES (tp_Compra('345', 002, to_date('31/10/2021', 'dd/mm/yyyy'), '09:00'));
-INSERT INTO tb_Compra VALUES (tp_Compra('345', 004, to_date('08/11/2021', 'dd/mm/yyyy'), '15:55'));
-INSERT INTO tb_Compra VALUES (tp_Compra('456', 010, to_date('28/10/2021', 'dd/mm/yyyy'), '14:25'));
-INSERT INTO tb_Compra VALUES (tp_Compra('456', 019, to_date('02/10/2021', 'dd/mm/yyyy'), '17:00'));
-INSERT INTO tb_Compra VALUES (tp_Compra('456', 006, to_date('13/11/2021', 'dd/mm/yyyy'), '12:30'));
-INSERT INTO tb_Compra VALUES (tp_Compra('567', 004, to_date('01/11/2021', 'dd/mm/yyyy'), '13:10'));
-INSERT INTO tb_Compra VALUES (tp_Compra('567', 022, to_date('24/10/2021', 'dd/mm/yyyy'), '08:50'));
-INSERT INTO tb_Compra VALUES (tp_Compra('567', 014, to_date('25/10/2021', 'dd/mm/yyyy'), '09:48'));
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+    (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'),
+    (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 1),
+    to_date('01/10/2021', 'dd/mm/yyyy'))
+    );
+
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 2),
+        to_date('02/10/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 2),
+        to_date('05/11/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '345'),
+        (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 1),
+        to_date('15/10/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'),
+        (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 3),
+        to_date('07/11/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Compra VALUES (
+    tp_Compra(
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        (SELECT REF(P) FROM tb_Produto P WHERE P.Codigo = 4),
+        to_date('09/10/2021', 'dd/mm/yyyy'))
+        );
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Servico
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho pequeno', '30'));
@@ -89,51 +172,168 @@ INSERT INTO tb_Servico VALUES (tp_Servico('Tosa tesoura', '50'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Pacote completo', '100'));
 INSERT INTO tb_Servico VALUES (tp_Servico('Banho antialérgico', '55'));
 
--- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Telefone
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('985678455'), tp_NumTelefone('345798001')), '123'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('984563725'), tp_NumTelefone('375322784')), '234'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('998445609'), tp_NumTelefone('332243759')), '345'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('997874739'), tp_NumTelefone('997579739')), '456'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('981450988'), tp_NumTelefone('987005643')), '567'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('985664321'), tp_NumTelefone('307441139')), '678'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('980923455'), tp_NumTelefone('335698760')), '789'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('990998765'), tp_NumTelefone('991223245')), '890'));
-INSERT INTO tb_Telefone VALUES (tp_Telefone(tp_ListaNumeros(tp_NumTelefone('992745566'), tp_NumTelefone('987653033')), '891'));
-
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Pet
-INSERT INTO tb_Pet VALUES (tp_Pet('123', 'Tutty', 'Cachorro', 'Cocker Spaniel', 'Branca', to_date('15/12/2010', 'dd/mm/yyyy')));
-INSERT INTO tb_Pet VALUES (tp_Pet('234', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/10/2016', 'dd/mm/yyyy')));
-INSERT INTO tb_Pet VALUES (tp_Pet('234', 'Nala', 'Cachorro', 'Yorkshire', 'Cinza', to_date('26/10/2018', 'dd/mm/yyyy')));
-INSERT INTO tb_Pet VALUES (tp_Pet('345', 'Lilica', 'Cachorro', 'Lhasa apso', 'Preta', to_date('17/04/2004', 'dd/mm/yyyy')));
-INSERT INTO tb_Pet VALUES (tp_Pet('456', 'Lupe', 'Cachorro,', 'Yorkshire', 'Preta', to_date('16/11/2011', 'dd/mm/yyyy')));
-INSERT INTO tb_Pet VALUES (tp_Pet('567', 'Luna', 'Cachorro', 'Yorkshire', 'Marrom', to_date('20/12/2020', 'dd/mm/yyyy')));
+INSERT INTO tb_Pet VALUES (
+    tp_Pet(
+        'Tutty', 'Cachorro', 'Cocker Spaniel', 'Branca', 
+        to_date('15/12/2010', 'dd/mm/yyyy'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'))
+        );
+
+
+INSERT INTO tb_Pet VALUES (
+    tp_Pet(
+        'Nala', 'Cachorro', 'Yorkshire', 'Cinza', 
+        to_date('26/10/2018', 'dd/mm/yyyy'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'))
+        );
+
+INSERT INTO tb_Pet VALUES (
+    tp_Pet(
+        'Lilica', 'Cachorro', 'Lhasa apso', 'Preta', 
+        to_date('17/04/2004', 'dd/mm/yyyy'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '345'))
+        );
+
+INSERT INTO tb_Pet VALUES (
+    tp_Pet(
+        'Lupe', 'Cachorro,', 'Yorkshire', 'Preta', 
+        to_date('16/11/2011', 'dd/mm/yyyy'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'))
+        );
+
+INSERT INTO tb_Pet VALUES (
+    tp_Pet(
+        'Luna', 'Cachorro', 'Yorkshire', 'Marrom', 
+        to_date('20/12/2020', 'dd/mm/yyyy'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '567'))
+        );
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Atende
-INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Luna', 'Banho Pequeno', '234', to_date('17/11/2021', 'dd/mm/yyyy'), '14:20'));
-INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Nala', 'Tosa Higiênica', '234', to_date('02/12/2021', 'dd/mm/yyyy'), '15:02'));
-INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lupe', 'Tosa Máquina', '456', to_date('10/12/2021', 'dd/mm/yyyy'), '09:30'));
-INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Tutty', 'Tosa Tesoura', '123', to_date('25/11/2021', 'dd/mm/yyyy'), '17:00'));
-INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lilica', 'Hidratação', '345', to_date('13/12/2021', 'dd/mm/yyyy'), '12:45'));
-INSERT INTO tb_Atende VALUES (tp_Atende('678', 'Luna', 'Banho Antialérgico', '567', to_date('09/12/2021', 'dd/mm/yyyy'), '10:10'));
-INSERT INTO tb_Atende VALUES (tp_Atende('891', 'Lupe', 'Banho Grande', '456', to_date('03/11/2021', 'dd/mm/yyyy'), '11:30'));
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Pequeno'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        to_date('17/11/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Nala'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Higiênica'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        to_date('02/12/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lupe'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Máquina'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'),
+        to_date('10/12/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Tutty'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Tosa Tesoura'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'),
+        to_date('25/11/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lilica'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Hidratação'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '345'), 
+        to_date('13/12/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='678'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Antialérgico'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '567'),
+        to_date('09/12/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Atende VALUES (
+    tp_Atende(
+        (SELECT REF(F) FROM tb_Funcionario F WHERE F.CPF ='891'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lupe'),
+        (SELECT REF(S) FROM tb_Servico S WHERE S.Tipo_Servico = 'Banho Grande'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'),
+        to_date('03/11/2021', 'dd/mm/yyyy'))
+        );
 
 -- INSERÇÃO DE OBJETOS EM TABELA DE OBJETOS tb_Consulta
-INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Tutty', '123', to_date('16/11/2021', 'dd/mm/yyyy'), '10:00', NULL));
-INSERT INTO tb_Consulta VALUES (tp_Consulta('789', 'Luna', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:00', 003));
-INSERT INTO tb_Consulta VALUES (tp_Consulta('789', 'Nala', '234', to_date('22/11/2021', 'dd/mm/yyyy'), '14:30', 004));
-INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Lilica', '345', to_date('10/12/2021', 'dd/mm/yyyy'), '11:00', NULL));
-INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Lupe', '456', to_date('05/12/2021', 'dd/mm/yyyy'), '09:15', 026));
-INSERT INTO tb_Consulta VALUES (tp_Consulta('890', 'Luna', '567', to_date('30/11/2021', 'dd/mm/yyyy'), '17:00', 013));
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='890'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Tutty'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '123'),
+        NULL,
+        to_date('16/11/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='789'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        (SELECT REF(A) FROM tb_Produto A WHERE A.Codigo = 001),
+        to_date('22/11/2021 14:00', 'dd/mm/yyyy HH24:MI'))
+        );
+
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='789'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Nala'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '234'),
+        (SELECT REF(A) FROM tb_Produto A WHERE A.Codigo = 004),
+        to_date('22/11/2021 14:30', 'dd/mm/yyyy HH24:MI'))
+        );
+
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='890'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lilica'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '345'),
+        NULL,
+        to_date('10/12/2021', 'dd/mm/yyyy')));
+
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='890'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Lupe'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '456'),
+        (SELECT REF(A) FROM tb_Produto A WHERE A.Codigo = 026),
+        to_date('05/12/2021', 'dd/mm/yyyy'))
+        );
+
+INSERT INTO tb_Consulta VALUES (
+    tp_Consulta(
+        (SELECT REF(V) FROM tb_Veterinario V WHERE V.CPF='890'),
+        (SELECT REF(P) FROM tb_Pet P WHERE P.Nome = 'Luna'),
+        (SELECT REF(C) FROM tb_Cliente C WHERE C.CPF = '567'),
+        (SELECT REF(A) FROM tb_Produto A WHERE A.Codigo = 013),
+        to_date('30/11/2021', 'dd/mm/yyyy'))
+        );
 
 -- CONSULTAS
-SELECT * FROM tb_Cliente C, TABLE(C.Endereco);
-SELECT * FROM tb_Endereco;
-SELECT * FROM tb_Funcionario F, TABLE(F.Endereco); --ta dando erro a visualização por ter uma REF
-SELECT * FROM tb_Veterinario V, TABLE(V.Endereco); --ta dando erro a visualização por ter uma REF
-SELECT * FROM tb_Servico;
+SELECT * FROM tb_Cliente;
+SELECT * FROM tb_Funcionario; --ta dando erro a visualização por ter uma REF
+SELECT * FROM tb_Veterinario; --deref
+SELECT * FROM tb_Servico; 
 SELECT * FROM tb_Produto;
-SELECT * FROM tb_Telefone T, TABLE(T.Num_telefone);
-SELECT * FROM tb_Compra;
-SELECT * FROM tb_Pet;
-SELECT * FROM tb_Atende;
-SELECT * FROM tb_Consulta;
+SELECT * FROM tb_Compra; --deref
+SELECT * FROM tb_Pet; --deref
+SELECT * FROM tb_Atende; --deref
+SELECT * FROM tb_Consulta; --deref
