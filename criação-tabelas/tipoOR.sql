@@ -119,17 +119,6 @@ FINAL MEMBER PROCEDURE exibir_detalhes IS
 END;
 /
 
-DECLARE
-    item1 tp_Produto;
-    item2 tp_Produto;
-BEGIN
-    SELECT VALUE(p) INTO item FROM tb_Produto p WHERE Codigo = '1';
-    item1.exibir_detalhes();
-    SELECT VALUE(o) INTO item FROM tb_Produto o WHERE Codigo = '2';
-    item2.exibir_detalhes();
-END;
-
-/
 
 CREATE OR REPLACE TYPE tp_Atende AS OBJECT ( 
     funcionario REF tp_Funcionario, 
@@ -167,20 +156,7 @@ END;
 CREATE OR REPLACE TYPE tp_Compra AS OBJECT ( 
     cliente REF tp_Cliente, 
     produto REF tp_Produto, 
-    dt_compra TIMESTAMP, 
+    dt_compra TIMESTAMP
     --MÉTODOS 
-    MEMBER PROCEDURE exibir_detalhes
 ); 
-
-/
-
-CREATE OR REPLACE TYPE BODY tp_Compra AS
-MEMBER PROCEDURE exibir_detalhes IS
-    BEGIN
-        DBMS.OUTPUT.PUT_LINE('Detalhes da compra');
-        DBMS.OUTPUT.PUT_LINE('CPF Cliente: ' || CPF_Cliente);
-        DBMS.OUTPUT.PUT_LINE('Produto comprado: ' || TO_CHAR(Cod_Produto));
-        DBMS.OUTPUT.PUT_LINE('Data da compra: '|| TO_CHAR(Data_Compra) || Hora_Compra);
-    END;
-END;
 
