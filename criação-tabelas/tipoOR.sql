@@ -32,14 +32,14 @@ CREATE OR REPLACE TYPE tp_Pessoa AS OBJECT (
     Email VARCHAR2 (255), 
     Data_Nascimento DATE, 
     Endereco tp_lista_Endereco, 
-    telefone tp_Telefones
+    telefone tp_Telefones,
     -- MÉTODOS 
+    MEMBER PROCEDURE infos
 ) NOT FINAL NOT INSTANTIABLE; 
 
 /
 -- HERANÇA DE TIPOS 
 CREATE TYPE tp_Cliente UNDER tp_Pessoa( 
-    --CONSTRUCTOR FUNCTION tp_Cliente(x1 tp_Pessoa) RETURN SELF AS RESULT 
 ); 
  
 
@@ -47,15 +47,30 @@ CREATE TYPE tp_Cliente UNDER tp_Pessoa(
 --CRIAR TIPO FUNCIONARIO QUE HERDA DE PESSOA
 CREATE TYPE tp_Funcionario UNDER tp_Pessoa ( 
     Matricula VARCHAR2 (255), 
-    Salario INT, 
+    Salario NUMBER, 
     Cargo VARCHAR2 (255), 
     Data_de_admissao date, 
     supervisor REF tp_Funcionario, 
- 
-    CONSTRUCTOR FUNCTION tp_Funcionario(x1 tp_Pessoa) RETURN SELF AS RESULT
+    OVERRIDING MEMBER PROCEDURE infos,
+    MEMBER FUNCTION salario_anual RETURN NUMBER
 
 )NOT FINAL; 
 
+/
+CREATE OR REPLACE TYPE BODY tp_Funcionario AS
+    OVERRIDING MEMBER PROCEDURE infos IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE(CPF);
+        DBMS_OUTPUT.PUT_LINE(Nome);
+        DBMS_OUTPUT.PUT_LINE(Salario);
+        DBMS_OUTPUT.PUT_LINE(Cargo);
+    END;
+
+    MEMBER FUNCTION salario_anual RETURN NUMBER IS
+    BEGIN
+        RETURN Salario*12;
+    END;
+END;
 /
 
 

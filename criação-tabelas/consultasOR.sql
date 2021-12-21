@@ -29,6 +29,22 @@ BEGIN
     END IF;
 END;
 
+/
+
 -- TESTE MAP MEMBER FUNCTION EM PRODUTO
 SELECT R.qnt_produtos() FROM tb_produto R;
-    
+
+/
+
+--TESTE OVERRIDING MEMBER PROCEDURE EM FUNCIONARIO
+DECLARE 
+    funcionario tp_Funcionario;
+BEGIN   
+    SELECT VALUE(F) INTO funcionario FROM tb_funcionario F WHERE F.cpf = '891';
+    funcionario.infos();
+END;
+
+/
+
+--TESTE MEMBER FUNCTION EM FUNCIONARIO QUE CALCULA O RECEBIMENTO ANUAL DO SALARIO
+SELECT E.salario_anual() FROM tb_funcionario E WHERE E.cpf = '890';
