@@ -119,7 +119,8 @@ CREATE OR REPLACE TYPE tp_Produto AS OBJECT (
     Marca VARCHAR2 (255),  
     Nome VARCHAR2 (255),
     --MÉTODOS 
-    FINAL MEMBER PROCEDURE exibir_detalhes
+    FINAL MEMBER PROCEDURE exibir_detalhes,
+    MAP MEMBER FUNCTION qnt_produtos RETURN NUMBER
 ); 
 
 /
@@ -134,6 +135,14 @@ FINAL MEMBER PROCEDURE exibir_detalhes IS
         DBMS_OUTPUT.PUT_LINE('Quantidade em estoque: ' || TO_CHAR(Estoque));
         DBMS_OUTPUT.PUT_LINE('Data de validade: ' || TO_CHAR(Validade));
     END;
+
+--Retorna a quantidade de produtos com preço maior que 30
+MAP MEMBER FUNCTION qnt_produtos RETURN NUMBER IS
+     aux_contagem NUMBER;
+         BEGIN   
+             SELECT COUNT (*) INTO aux_contagem FROM tb_Produto WHERE Preco > 30;
+             RETURN aux_contagem;
+         END;
 END;
 /
 

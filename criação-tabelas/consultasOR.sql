@@ -10,7 +10,7 @@ BEGIN
 END;
 
 /
-
+-- TESTE DE ORDER MEMBER EM SERVICO
 DECLARE
     aux NUMBER;
     servico1 tp_Servico;
@@ -28,4 +28,7 @@ BEGIN
          DBMS_OUTPUT.PUT_LINE('O produto ' || TO_CHAR(servico1.tipo_servico) || ' é mais caro.');
     END IF;
 END;
+
+-- TESTE MAP MEMBER FUNCTION EM PRODUTO
+SELECT R.qnt_produtos() FROM tb_produto R;
     
